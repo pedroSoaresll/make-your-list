@@ -39,7 +39,8 @@ Below we have a list of gifts
 ```json
 // body payload:
 {
-  "name": "Gift name here"
+  "name": "Gift name here",
+  "assigned": "A person name" // (optional)
 }
 ```
 
