@@ -49,12 +49,36 @@ const Home = () => {
             </Flex>
           </ListItem>
           <ListItem>
-            Assumenda, quia temporibus eveniet a libero incidunt suscipit
+            <Link color="blue.400">
+              Assumenda, quia temporibus eveniet a libero incidunt suscipit
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link color="blue.400">
+              Assumenda, quia temporibus eveniet a libero incidunt suscipit
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link color="blue.400">
+              Assumenda, quia temporibus eveniet a libero incidunt suscipit
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link color="blue.400">
+              Assumenda, quia temporibus eveniet a libero incidunt suscipit
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link color="blue.400">
+              Assumenda, quia temporibus eveniet a libero incidunt suscipit
+            </Link>
           </ListItem>
         </List>
 
         <Flex justifyContent="flex-end">
-          <Button colorScheme="twitter" variant="ghost">Adicionar presente</Button>
+          <Button colorScheme="twitter" variant="ghost">
+            Adicionar presente
+          </Button>
         </Flex>
       </Grid>
     </Layout>
