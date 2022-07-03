@@ -79,16 +79,16 @@ export const ListWeddingGifts = () => {
 
   return (
     <Stack spacing="8">
-      <Stack>
-        <List spacing="6">
+      <List>
+        <Stack spacing="4" divider={<Divider />}>
           {data?.data.map((weddingGift) => (
-            <>
-              <WeddingGiftListItem weddingGift={weddingGift} />
-              <Divider />
-            </>
+            <WeddingGiftListItem
+              key={weddingGift.id}
+              weddingGift={weddingGift}
+            />
           ))}
-        </List>
-      </Stack>
+        </Stack>
+      </List>
 
       <Flex justifyContent="flex-end">
         <Button colorScheme="twitter">Adicionar presente</Button>
