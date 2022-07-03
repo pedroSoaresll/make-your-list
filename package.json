@@ -7,6 +7,7 @@
     "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "axios": "^0.27.2",
     "concurrently": "^7.2.2",
     "framer-motion": "^6.3.16",
     "react": "^18.2.0",
@@ -23,7 +24,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "format:check": "prettier --check ./src",
-    "server": "json-server --port 8000 --watch src/__mocks__/db.json"
+    "server": "json-server --delay 1500 --port 8000 --watch src/__mocks__/db.json"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

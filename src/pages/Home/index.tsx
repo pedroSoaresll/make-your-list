@@ -1,13 +1,6 @@
-import {
-  Button,
-  Flex,
-  Grid,
-  Heading,
-  Link,
-  List,
-  ListItem,
-  Text,
-} from '@chakra-ui/react'
+import { Flex, Grid, Heading } from '@chakra-ui/react'
+
+import { ListWeddingGifts } from '../../modules/wedding-gifts/List'
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -36,50 +29,12 @@ const Home = () => {
         backgroundColor="gray.50"
         padding="16px 24px"
         borderRadius="xl"
+        maxWidth="500px"
+        width="100%"
       >
         <Heading>Presentes de casamento</Heading>
 
-        <List spacing="6">
-          <ListItem>
-            <Flex columnGap="8px" flexWrap="wrap">
-              <Link color="blue.400">Pedro</Link>
-              <Text textDecoration="line-through">
-                - Lorem ipsum dolor sit amet, consectetur adipisicing elit
-              </Text>
-            </Flex>
-          </ListItem>
-          <ListItem>
-            <Link color="blue.400">
-              Assumenda, quia temporibus eveniet a libero incidunt suscipit
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link color="blue.400">
-              Assumenda, quia temporibus eveniet a libero incidunt suscipit
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link color="blue.400">
-              Assumenda, quia temporibus eveniet a libero incidunt suscipit
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link color="blue.400">
-              Assumenda, quia temporibus eveniet a libero incidunt suscipit
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link color="blue.400">
-              Assumenda, quia temporibus eveniet a libero incidunt suscipit
-            </Link>
-          </ListItem>
-        </List>
-
-        <Flex justifyContent="flex-end">
-          <Button colorScheme="twitter" variant="ghost">
-            Adicionar presente
-          </Button>
-        </Flex>
+        <ListWeddingGifts />
       </Grid>
     </Layout>
   )
