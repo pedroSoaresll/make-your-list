@@ -56,9 +56,11 @@ const WeddingGiftListItem: React.FC<WeddingGiftListItemProps> = ({
     return (
       <ListItem>
         <Flex columnGap="8px" flexWrap="wrap">
-          <Link color="blue.400">{weddingGift.assigned}</Link>
-          <Text textDecoration="line-through">-</Text>
-          <Text textDecoration="line-through">{weddingGift.name}</Text>
+          <Link textColor="twitter.300">{weddingGift.assigned}</Link>
+          <Text colorScheme="blackAlpha">-</Text>
+          <Text colorScheme="blackAlpha" textDecoration="line-through">
+            {weddingGift.name}
+          </Text>
         </Flex>
       </ListItem>
     )
