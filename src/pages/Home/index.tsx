@@ -6,11 +6,11 @@ import {
   Link,
   List,
   ListItem,
-  Text
-} from "@chakra-ui/react";
+  Text,
+} from '@chakra-ui/react'
 
 interface LayoutProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -25,8 +25,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         {children}
       </Flex>
     </Flex>
-  );
-};
+  )
+}
 
 const Home = () => {
   return (
@@ -82,7 +82,7 @@ const Home = () => {
         </Flex>
       </Grid>
     </Layout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
