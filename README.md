@@ -8,6 +8,10 @@ The problema is that some couples was wedding and to organize a party to give gi
 
 The backend is developing by [Arthur Soares](https://github.com/Arthur-ext) in this repository [Wedding Gift API](https://github.com/Arthur-ext/wedding-gifts-api)
 
+## API Mock
+
+To start the project with api mock you just need to run `npm run start:local`
+
 ---
 
 ## Getting Started with Create React App
