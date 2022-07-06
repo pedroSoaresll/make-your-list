@@ -1,6 +1,6 @@
 export type WeddingGift = {
   id: string
-  assigned: string | null
+  assigned: string
   name: string
   createdAt: string
   updatedAt: string
