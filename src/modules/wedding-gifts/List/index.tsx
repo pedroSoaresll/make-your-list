@@ -24,9 +24,10 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useWeddingGifts } from '../../common/hooks'
+import { useMutationDeleteWeddingGift } from '../../common/hooks/use-mutation-delete-wedding-gift'
 import { WeddingGift } from '../../common/types'
 import { ModalModifyWeddingGiftProps, WeddingGiftListItemProps } from './types'
 
@@ -143,6 +144,20 @@ const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
   onClose,
   weddingGift,
 }) => {
+  const deleteMutation = useMutationDeleteWeddingGift()
+
+  const handleOnRemoveWeddingGift = () => {
+    if (!weddingGift?.id) return
+    deleteMutation.mutate({ id: weddingGift.id })
+  }
+
+  useEffect(() => {
+    if (deleteMutation.isSuccess) {
+      deleteMutation.reset()
+      onClose()
+    }
+  }, [deleteMutation, onClose])
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
@@ -178,7 +193,12 @@ const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
         </ModalBody>
 
         <ModalFooter columnGap="2">
-          <Button variant="ghost" colorScheme="red">
+          <Button
+            variant="ghost"
+            colorScheme="red"
+            onClick={handleOnRemoveWeddingGift}
+            isLoading={deleteMutation.isLoading}
+          >
             Remover
           </Button>
           <Button colorScheme="twitter">Salvar</Button>

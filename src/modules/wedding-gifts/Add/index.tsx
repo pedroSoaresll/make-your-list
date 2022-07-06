@@ -19,14 +19,14 @@ import {
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useMutationWeddingGift } from '../../common/hooks/use-mutation-wedding-gift'
+import { useMutationCreateWeddingGift } from '../../common/hooks'
 import { AddWeddingGiftFormData } from './types'
 
 const ModalAddWeddingGift: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
   const { register, handleSubmit, formState, reset } =
     useForm<AddWeddingGiftFormData>()
 
-  const mutation = useMutationWeddingGift()
+  const mutation = useMutationCreateWeddingGift()
 
   const submit = ({ name }: AddWeddingGiftFormData) => mutation.mutate({ name })
 

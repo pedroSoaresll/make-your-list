@@ -7,3 +7,5 @@ export type WeddingGift = {
 }
 
 export type PostGift = Pick<WeddingGift, 'name'>
+
+export type DeleteGift = Pick<WeddingGift, 'id'>
