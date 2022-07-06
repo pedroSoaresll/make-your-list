@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+# Project
+
+This project is a simple list with some features like add, remove and modify items. It was though and develop to solve a family problem.
+
+The problema is that some couples was wedding and to organize a party to give gifts to them is hard to manage by WhatsApp group. Some problems that happen is loose information, gift assigners duplication, one people to manage list, difficult to know what is the latest list.
+
+## API Backend
+
+The backend was developing by [Arthur Soares](https://github.com/Arthur-ext) in this repository [Wedding Gift API](https://github.com/Arthur-ext/wedding-gifts-api)
+
+---
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
