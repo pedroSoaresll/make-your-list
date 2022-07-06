@@ -6,7 +6,7 @@ The problema is that some couples was wedding and to organize a party to give gi
 
 ## API Backend
 
-The backend was developing by [Arthur Soares](https://github.com/Arthur-ext) in this repository [Wedding Gift API](https://github.com/Arthur-ext/wedding-gifts-api)
+The backend is developing by [Arthur Soares](https://github.com/Arthur-ext) in this repository [Wedding Gift API](https://github.com/Arthur-ext/wedding-gifts-api)
 
 ---
 
