@@ -3,9 +3,9 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Button,
   Divider,
   Flex,
-  Link,
   List,
   ListItem,
   Skeleton,
@@ -51,7 +51,9 @@ const WeddingGiftListItem: React.FC<WeddingGiftListItemProps> = ({
     return (
       <ListItem>
         <Flex columnGap="8px" flexWrap="wrap">
-          <Link textColor="twitter.300">{weddingGift.assigned}</Link>
+          <Button variant="link" colorScheme="twitter">
+            {weddingGift.assigned}
+          </Button>
           <Text colorScheme="blackAlpha">-</Text>
           <Text colorScheme="blackAlpha" textDecoration="line-through">
             {weddingGift.name}
@@ -62,7 +64,9 @@ const WeddingGiftListItem: React.FC<WeddingGiftListItemProps> = ({
 
   return (
     <ListItem>
-      <Link color="blue.400">{weddingGift.name}</Link>
+      <Button variant="link" colorScheme="twitter">
+        {weddingGift.name}
+      </Button>
     </ListItem>
   )
 }

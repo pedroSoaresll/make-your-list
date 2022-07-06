@@ -3,8 +3,8 @@ import {
   Box,
   Button,
   Flex,
-  Grid,
   Heading,
+  Stack,
   Text,
   useColorMode,
   useColorModeValue,
@@ -64,19 +64,18 @@ const Home = () => {
     <Layout>
       <ToggleTheme />
 
-      <Grid
-        rowGap="10"
+      <Stack
+        spacing="8"
         bg={bg}
-        padding="16px 24px"
+        paddingY="8"
+        paddingX="6"
         borderRadius="xl"
         width="100%"
       >
-        <Heading colorScheme="blackAlpha">Presentes de casamento</Heading>
-
+        <Heading colorScheme="blackAlpha">Lista de presentes</Heading>
         <ListWeddingGifts />
-
         <Add />
-      </Grid>
+      </Stack>
     </Layout>
   )
 }
