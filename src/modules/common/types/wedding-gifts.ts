@@ -5,3 +5,5 @@ export type WeddingGift = {
   createdAt: string
   updatedAt: string
 }
+
+export type PostGift = Pick<WeddingGift, 'name'>

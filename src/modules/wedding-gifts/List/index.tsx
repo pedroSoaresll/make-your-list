@@ -3,7 +3,6 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Button,
   Divider,
   Flex,
   Link,
@@ -26,10 +25,6 @@ const LoadingState = () => {
         <Skeleton height="24px" />
         <Skeleton height="24px" />
       </Stack>
-
-      <Flex justifyContent="flex-end" mt="16">
-        <Skeleton width="150px" height="24px" />
-      </Flex>
     </Stack>
   )
 }
@@ -80,7 +75,7 @@ export const ListWeddingGifts = () => {
   if (isError) return <ErrorState />
 
   return (
-    <Stack spacing="8">
+    <Stack>
       <List>
         <Stack spacing="4" divider={<Divider />}>
           {data?.data.map((weddingGift) => (
@@ -91,10 +86,6 @@ export const ListWeddingGifts = () => {
           ))}
         </Stack>
       </List>
-
-      <Flex justifyContent="flex-end">
-        <Button colorScheme="twitter">Adicionar presente</Button>
-      </Flex>
     </Stack>
   )
 }

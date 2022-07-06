@@ -10,6 +10,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 
+import { Add } from '../../modules/wedding-gifts/Add'
 import { ListWeddingGifts } from '../../modules/wedding-gifts/List'
 
 interface LayoutProps {
@@ -26,6 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         alignItems="center"
         marginY="16"
         flexDirection="column"
+        padding="2"
       >
         {children}
       </Flex>
@@ -39,7 +41,7 @@ const ToggleTheme = () => {
   return (
     <Box mb="3" alignSelf="flex-end">
       <Button onClick={toggleColorMode} size="xs">
-        {colorMode === 'light' ? (
+        {colorMode !== 'light' ? (
           <Flex columnGap="2">
             <MoonIcon />
             <Text>Escuro</Text>
@@ -72,6 +74,8 @@ const Home = () => {
         <Heading colorScheme="blackAlpha">Presentes de casamento</Heading>
 
         <ListWeddingGifts />
+
+        <Add />
       </Grid>
     </Layout>
   )
