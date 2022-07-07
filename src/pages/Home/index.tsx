@@ -4,12 +4,15 @@ import {
   Button,
   Flex,
   Heading,
+  Spinner,
   Stack,
   Text,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react'
+import { useIsFetching, useQueryClient } from 'react-query'
 
+import { USE_WEDDING_GIFTS_KEY } from '../../modules/common/hooks'
 import { Add } from '../../modules/wedding-gifts/Add'
 import { ListWeddingGifts } from '../../modules/wedding-gifts/List'
 
@@ -59,6 +62,7 @@ const ToggleTheme = () => {
 
 const Home = () => {
   const bg = useColorModeValue('gray.50', 'blackAlpha.200')
+  const isFetching = useIsFetching([USE_WEDDING_GIFTS_KEY])
 
   return (
     <Layout>
@@ -74,7 +78,12 @@ const Home = () => {
       >
         <Heading colorScheme="blackAlpha">Lista de presentes</Heading>
         <ListWeddingGifts />
-        <Add />
+
+        <Stack direction="row" justifyContent="space-between">
+          {isFetching ? <Spinner /> : <div></div>}
+
+          <Add />
+        </Stack>
       </Stack>
     </Layout>
   )

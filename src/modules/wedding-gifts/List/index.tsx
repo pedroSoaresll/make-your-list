@@ -13,7 +13,7 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { useWeddingGifts } from '../../common/hooks'
 import { WeddingGift } from '../../common/types'
@@ -25,19 +25,19 @@ export const ListWeddingGifts = () => {
   const { isLoading, isError, data } = useWeddingGifts()
   const [weddingGiftToModify, setWeddingGiftToModify] = useState<WeddingGift>()
 
-  if (isLoading) return <LoadingState />
-
-  if (isError) return <ErrorState />
-
   const handleOnModifyItem = (weddingGift: WeddingGift) => {
     setWeddingGiftToModify(weddingGift)
     onOpen()
   }
 
-  const handleOnCloseModal = () => {
+  const handleOnCloseModal = useCallback(() => {
     onClose()
     setWeddingGiftToModify(undefined)
-  }
+  }, [onClose])
+
+  if (isLoading) return <LoadingState />
+
+  if (isError) return <ErrorState />
 
   return (
     <>

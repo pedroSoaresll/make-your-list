@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { DeleteGift, PostGift, WeddingGift } from '../types'
+import { DeleteGift, PostGift, UpdateGift, WeddingGift } from '../types'
 
 const service = axios.create({
   baseURL: 'http://localhost:8000',
@@ -14,3 +14,6 @@ export const createWeddingGifts = (data: PostGift) =>
 
 export const deleteWeddingGifts = ({ id }: DeleteGift) =>
   service.delete(`/wedding-gifts/${id}`)
+
+export const updateWeddingGifts = ({ id, ...data }: UpdateGift) =>
+  service.patch(`/wedding-gifts/${id}`, data)

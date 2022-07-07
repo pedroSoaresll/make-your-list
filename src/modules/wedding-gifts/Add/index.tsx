@@ -82,11 +82,9 @@ export const Add = () => {
 
   return (
     <>
-      <Flex justifyContent="flex-end">
-        <Button onClick={onOpen} colorScheme="twitter">
-          Adicionar presente
-        </Button>
-      </Flex>
+      <Button onClick={onOpen} colorScheme="twitter">
+        Adicionar presente
+      </Button>
 
       <ModalAddWeddingGift isOpen={isOpen} onClose={onClose} />
     </>

@@ -9,3 +9,5 @@ export type WeddingGift = {
 export type PostGift = Pick<WeddingGift, 'name'>
 
 export type DeleteGift = Pick<WeddingGift, 'id'>
+
+export type UpdateGift = Pick<WeddingGift, 'id' | 'name' | 'assigned'>
