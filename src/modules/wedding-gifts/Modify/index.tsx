@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { useEffect } from 'react'
 
-import { useMutationDeleteWeddingGift } from '../../common/hooks/use-mutation-delete-wedding-gift'
+import { useMutationDeleteWeddingGift } from '../../common/hooks'
 import { ModalModifyWeddingGiftProps } from './types'
 
 export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
