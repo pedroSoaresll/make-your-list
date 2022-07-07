@@ -39,6 +39,15 @@ export const ListWeddingGifts = () => {
 
   if (isError) return <ErrorState />
 
+  if (!data?.data.length)
+    return (
+      <Alert status="warning">
+        <AlertIcon />
+        <AlertTitle>Nenhum presente cadastrado.</AlertTitle>
+        <AlertDescription>Os novos presentes aparecerão aqui.</AlertDescription>
+      </Alert>
+    )
+
   return (
     <>
       <Stack>
