@@ -4,7 +4,7 @@ on:
       - main
 
 jobs:
-  my_first_job:
+  build:
     name: My first jobs
     runs-on: ubuntu-latest
     steps:
@@ -15,5 +15,9 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm i
+      - name: Code Lint
+        run: npm run lint
+      - name: Code Format
+        run: npm run format:check
       - name: Build
         run: npm run build
