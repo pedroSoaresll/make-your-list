@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: My first jobs
+    name: Check and build the app
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
