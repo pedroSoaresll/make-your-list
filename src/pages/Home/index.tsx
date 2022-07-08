@@ -10,7 +10,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { useIsFetching, useQueryClient } from 'react-query'
+import { useIsFetching } from 'react-query'
 
 import { USE_WEDDING_GIFTS_KEY } from '../../modules/common/hooks'
 import { Add } from '../../modules/wedding-gifts/Add'
