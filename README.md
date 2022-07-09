@@ -1,3 +1,4 @@
+![](https://vercelbadge.vercel.app/api/pedroSoaresll/wedding-gifts)
 ![](https://api.checklyhq.com/v1/badges/checks/f4d841b1-83af-42c3-bca1-482b27d34925?style=flat&theme=default)
 
 # Project
@@ -13,6 +14,17 @@ The backend is developing by [Arthur Soares](https://github.com/Arthur-ext) in t
 ## API Mock
 
 To start the project with api mock you just need to run `npm run start:local`
+
+## Integrations
+This repository uses [Vercel](https://vercel.com) and [Checkly](https://www.checklyhq.com).
+
+### Vercel
+Vercel is used to administrate the deployment and available the app for the internet. In the top of this readme you can see the badge showing you the latest status.
+
+Vercel is enabled to generate a deployment always for pull requests (generating an auto link preview) and when it's pull requests is merged, also run a deployment but it being for production.
+
+### Checkly
+Checkly is used to monitoring the app periodically checking it's status check with scenarios that you can build like a E2E tests. For a while, this project is checked in each 24 hours. In the top of this readme you can see the badge showing you the latest status.
 
 ---
 
