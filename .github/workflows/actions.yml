@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-  code_checking:
+  code_lint:
     name: Code Checking
     runs-on: ubuntu-latest
     needs: install_dependencies
@@ -26,15 +26,39 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
+      - name: Restore dependencies
+        run: npm ci
       - name: Code Lint
         run: npm run lint
+
+  code_format:
+    name: Code Checking
+    runs-on: ubuntu-latest
+    needs: install_dependencies
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Restore dependencies
+        run: npm ci
       - name: Code Format
         run: npm run format:check
 
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: code_checking
+    needs:
+      - code_lint
+      - code_format
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Restore dependencies
+        run: npm ci
       - name: Build
         run: npm run build
