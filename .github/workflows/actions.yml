@@ -71,6 +71,7 @@ jobs:
     needs:
       - code_lint
       - code_format
+      - lighthouse_check
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
