@@ -46,6 +46,25 @@ jobs:
       - name: Code Format
         run: npm run format:check
 
+  lighthouse_check:
+    name: Lighthouse Check
+    runs-on: ubuntu-latest
+    needs: install_dependencies
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Restore dependencies
+        run: npm ci
+      - name: run Lighthouse CI
+        run: |
+          npm i -g @lhci/cli@0.8.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
   build:
     name: Build
     runs-on: ubuntu-latest
