@@ -5,6 +5,9 @@ module.exports = {
       // url: ['http://localhost:3000'],
       staticDistDir: 'build',
     },
+    upload: {
+      target: 'temporary-public-storage',
+    },
     assert: {
       preset: 'lighthouse:recommended',
       assertions: {
