@@ -17,8 +17,10 @@ import {
 import { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useMutationDeleteWeddingGift } from '../../common/hooks'
-import { useMutationUpdateWeddingGift } from '../../common/hooks/use-mutation-update-wedding-gift'
+import {
+  useMutationDeleteWeddingGift,
+  useMutationUpdateWeddingGift,
+} from '../../common/hooks'
 import { WeddingGift } from '../../common/types'
 import { ModalModifyWeddingGiftProps } from './types'
 

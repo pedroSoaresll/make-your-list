@@ -1,11 +1,23 @@
 module.exports = {
   ci: {
-    assert: {
-      // preset: 'lighthouse:recommended',
-    },
     collect: {
-      startServerCommand: 'npm start',
-      url: ['http://localhost:3000'],
+      startServerCommand: 'npm run server',
+      // url: ['http://localhost:3000'],
+      staticDistDir: 'build',
+    },
+    assert: {
+      preset: 'lighthouse:recommended',
+      assertions: {
+        // Cannot check these tests on local Http server through Lighthouse CI
+        'uses-http2': ['off', {}],
+        'uses-long-cache-ttl': ['off', {}],
+        canonical: ['off', {}],
+        'uses-rel-preconnect': ['warn', {}],
+        'unused-javascript': ['warn', {}],
+        'non-composited-animations': ['warn', {}],
+        'errors-in-console': ['warn', {}],
+        'csp-xss': ['warn', {}],
+      },
     },
   },
 }
