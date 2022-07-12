@@ -63,11 +63,10 @@ jobs:
       - name: Build
         run: npm run build
       - name: Cache build directory
-        id: cache-build-directory
         uses: actions/cache@v3
         with:
           path: build
-          key: ${{ runner.os }}-build-directory
+          key: ${{ runner.os }}-build-directory-${{ hashFiles('**/package-lock.json') }}
 
   lighthouse_check:
     name: Lighthouse Check
@@ -81,6 +80,12 @@ jobs:
           cache: 'npm'
       - name: Restore dependencies
         run: npm ci
+      - name: Cache build directory
+        uses: actions/cache@v3
+        with:
+          restore-keys: |
+            ${{ runner.os }}-build-directory-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.os }}-build-directory-
       - name: run Lighthouse CI
         run: |
           npm i -g @lhci/cli@0.9.x
