@@ -15,6 +15,12 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+
 
   code_lint:
     name: Check Code Lint
@@ -27,7 +33,13 @@ jobs:
           node-version: 16
           cache: 'npm'
       - name: Restore dependencies
-        run: npm ci
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.os }}-node-modules-directory-
       - name: Code Lint
         run: npm run lint
 
@@ -42,7 +54,13 @@ jobs:
           node-version: 16
           cache: 'npm'
       - name: Restore dependencies
-        run: npm ci
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.os }}-node-modules-directory-
       - name: Code Format
         run: npm run format:check
 
@@ -59,7 +77,13 @@ jobs:
           node-version: 16
           cache: 'npm'
       - name: Restore dependencies
-        run: npm ci
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.os }}-node-modules-directory-
       - name: Build
         run: npm run build
       - name: Cache build directory
@@ -79,7 +103,13 @@ jobs:
           node-version: 16
           cache: 'npm'
       - name: Restore dependencies
-        run: npm ci
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.os }}-node-modules-directory-
       - name: Cache build directory
         uses: actions/cache@v3
         with:
