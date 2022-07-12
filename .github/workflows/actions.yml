@@ -62,6 +62,12 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Cache build directory
+        id: cache-build-directory
+        uses: actions/cache@v3
+        with:
+          path: build
+          key: ${{ runner.os }}-build-directory
 
   lighthouse_check:
     name: Lighthouse Check
