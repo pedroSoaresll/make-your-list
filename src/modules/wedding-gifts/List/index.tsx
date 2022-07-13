@@ -51,16 +51,18 @@ export const ListWeddingGifts = () => {
   return (
     <>
       <Stack>
-        <List>
-          <Stack spacing="4" divider={<Divider />}>
-            {data?.data.map((weddingGift) => (
+        <List spacing="4">
+          {data?.data.map((weddingGift) => (
+            <>
               <WeddingGiftListItem
                 key={weddingGift.id}
                 weddingGift={weddingGift}
                 onModifyItem={handleOnModifyItem}
               />
-            ))}
-          </Stack>
+
+              <Divider mt="4" />
+            </>
+          ))}
         </List>
       </Stack>
 
