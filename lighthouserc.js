@@ -1,9 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'npm run start:lighthouse',
-      url: ['http://localhost:3000'],
-      // staticDistDir: 'build',
+      staticDistDir: 'build',
     },
     upload: {
       target: 'temporary-public-storage',
