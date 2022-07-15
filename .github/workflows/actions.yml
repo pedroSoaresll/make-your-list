@@ -20,6 +20,14 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+      - name: npm audit - Check dependencies vulnerability
+        uses: oke-py/npm-audit-action@v2.3.0
+        with:
+          audit_level: moderate
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_assignees: pedroSoaresll
+          issue_labels: vulnerability,test
+          dedupe_issues: true
 
 
   code_lint:
