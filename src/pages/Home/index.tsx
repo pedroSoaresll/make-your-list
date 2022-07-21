@@ -13,8 +13,8 @@ import {
 import { useIsFetching } from 'react-query'
 
 import { USE_WEDDING_GIFTS_KEY } from '../../modules/common/hooks'
-import { Add } from '../../modules/wedding-gifts/Add'
-import { ListWeddingGifts } from '../../modules/wedding-gifts/List'
+import { Add } from '../../modules/gifts/Add'
+import { ListWeddingGifts } from '../../modules/gifts/List'
 
 interface LayoutProps {
   children?: React.ReactNode
