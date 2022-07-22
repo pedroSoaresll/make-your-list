@@ -87,7 +87,7 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
               <FormControl>
                 <FormLabel>Responsável:</FormLabel>
                 <Input
-                  defaultValue={weddingGift?.assigned}
+                  defaultValue={weddingGift?.assigned ?? ''}
                   {...register('assigned')}
                 />
                 <FormHelperText>
@@ -129,3 +129,5 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
     </Modal>
   )
 }
+
+export default ModalModifyWeddingGift
