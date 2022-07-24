@@ -72,12 +72,35 @@ jobs:
       - name: Code Format
         run: npm run format:check
 
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    needs: install_dependencies
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Restore dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.os }}-node-modules-directory-
+      - name: Run tests
+        run: npm test
+
+
   build:
     name: Build
     runs-on: ubuntu-latest
     needs:
       - code_lint
       - code_format
+      - test
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
