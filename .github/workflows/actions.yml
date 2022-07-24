@@ -90,8 +90,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-directory-${{ hashFiles('**/package-lock.json') }}
             ${{ runner.os }}-node-modules-directory-
-      - name: Run tests
-        run: npm test
+      - uses: ArtiomTr/jest-coverage-report-action@v2
 
 
   build:
