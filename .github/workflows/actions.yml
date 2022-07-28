@@ -92,7 +92,6 @@ jobs:
             ${{ runner.os }}-node-modules-directory-
       - name: Run tests
         run: npm test -- --coverage
-      - uses: ArtiomTr/jest-coverage-report-action@v2
 
 
 
