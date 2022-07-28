@@ -4,7 +4,6 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
-  Divider,
   Flex,
   List,
   ListItem,
@@ -13,12 +12,13 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
-import { useCallback, useState } from 'react'
+import React, { Suspense, useCallback, useState } from 'react'
 
 import { useWeddingGifts } from '../../common/hooks'
 import { WeddingGift } from '../../common/types'
-import { ModalModifyWeddingGift } from '../Modify'
 import { WeddingGiftListItemProps } from './types'
+
+const ModalModifyWeddingGift = React.lazy(() => import('../Modify'))
 
 export const ListWeddingGifts = () => {
   const { isOpen, onClose, onOpen } = useDisclosure()
@@ -51,33 +51,33 @@ export const ListWeddingGifts = () => {
   return (
     <>
       <Stack>
-        <List spacing="4">
+        <List spacing="8">
           {data?.data.map((weddingGift) => (
-            <>
-              <WeddingGiftListItem
-                key={weddingGift.id}
-                weddingGift={weddingGift}
-                onModifyItem={handleOnModifyItem}
-              />
-
-              <Divider mt="4" />
-            </>
+            <WeddingGiftListItem
+              key={weddingGift.id}
+              weddingGift={weddingGift}
+              onModifyItem={handleOnModifyItem}
+            />
           ))}
         </List>
       </Stack>
 
-      <ModalModifyWeddingGift
-        isOpen={isOpen}
-        onClose={handleOnCloseModal}
-        weddingGift={weddingGiftToModify}
-      />
+      {isOpen && (
+        <Suspense fallback="Carregando...">
+          <ModalModifyWeddingGift
+            isOpen={isOpen}
+            onClose={handleOnCloseModal}
+            weddingGift={weddingGiftToModify}
+          />
+        </Suspense>
+      )}
     </>
   )
 }
 
 const LoadingState = () => {
   return (
-    <Stack spacing="8">
+    <Stack spacing="8" data-testid="list-loading-state">
       <Stack spacing="6">
         <Skeleton height="24px" />
         <Skeleton height="24px" />
@@ -90,7 +90,7 @@ const LoadingState = () => {
 
 const ErrorState = () => {
   return (
-    <Flex>
+    <Flex data-testid="list-error-state">
       <Alert status="error">
         <AlertIcon />
         <AlertTitle>Algo de errado não esta certo :/</AlertTitle>
