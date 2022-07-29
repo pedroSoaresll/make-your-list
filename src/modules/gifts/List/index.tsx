@@ -14,24 +14,24 @@ import {
 } from '@chakra-ui/react'
 import React, { Suspense, useCallback, useState } from 'react'
 
-import { useWeddingGifts, WeddingGift } from '../../../infra'
-import { WeddingGiftListItemProps } from './types'
+import { List as ListAPI, useLists } from '../../../infra'
+import { ListItemProps } from './types'
 
-const ModalModifyWeddingGift = React.lazy(() => import('../Modify'))
+const ModalModifyList = React.lazy(() => import('../Modify'))
 
-export const ListWeddingGifts = () => {
+export const ListView = () => {
   const { isOpen, onClose, onOpen } = useDisclosure()
-  const { isLoading, isError, data } = useWeddingGifts()
-  const [weddingGiftToModify, setWeddingGiftToModify] = useState<WeddingGift>()
+  const { isLoading, isError, data } = useLists()
+  const [ListToModify, setListToModify] = useState<ListAPI>()
 
-  const handleOnModifyItem = (weddingGift: WeddingGift) => {
-    setWeddingGiftToModify(weddingGift)
+  const handleOnModifyItem = (list: ListAPI) => {
+    setListToModify(list)
     onOpen()
   }
 
   const handleOnCloseModal = useCallback(() => {
     onClose()
-    setWeddingGiftToModify(undefined)
+    setListToModify(undefined)
   }, [onClose])
 
   if (isLoading) return <LoadingState />
@@ -51,10 +51,10 @@ export const ListWeddingGifts = () => {
     <>
       <Stack>
         <List spacing="8">
-          {data?.data.map((weddingGift) => (
-            <WeddingGiftListItem
-              key={weddingGift.id}
-              weddingGift={weddingGift}
+          {data?.data.map((list) => (
+            <ListItemView
+              key={list.id}
+              list={list}
               onModifyItem={handleOnModifyItem}
             />
           ))}
@@ -63,10 +63,10 @@ export const ListWeddingGifts = () => {
 
       {isOpen && (
         <Suspense fallback="Carregando...">
-          <ModalModifyWeddingGift
+          <ModalModifyList
             isOpen={isOpen}
             onClose={handleOnCloseModal}
-            weddingGift={weddingGiftToModify}
+            list={ListToModify}
           />
         </Suspense>
       )}
@@ -102,24 +102,21 @@ const ErrorState = () => {
   )
 }
 
-const WeddingGiftListItem: React.FC<WeddingGiftListItemProps> = ({
-  weddingGift,
-  onModifyItem,
-}) => {
-  if (weddingGift.assigned)
+const ListItemView: React.FC<ListItemProps> = ({ list, onModifyItem }) => {
+  if (list.assigned)
     return (
       <ListItem>
         <Flex columnGap="8px" flexWrap="wrap">
           <Button
-            onClick={() => onModifyItem(weddingGift)}
+            onClick={() => onModifyItem(list)}
             variant="link"
             colorScheme="twitter"
           >
-            {weddingGift.assigned}
+            {list.assigned}
           </Button>
           <Text colorScheme="blackAlpha">-</Text>
           <Text colorScheme="blackAlpha" textDecoration="line-through">
-            {weddingGift.name}
+            {list.name}
           </Text>
         </Flex>
       </ListItem>
@@ -130,9 +127,9 @@ const WeddingGiftListItem: React.FC<WeddingGiftListItemProps> = ({
       <Button
         variant="link"
         colorScheme="twitter"
-        onClick={() => onModifyItem(weddingGift)}
+        onClick={() => onModifyItem(list)}
       >
-        {weddingGift.name}
+        {list.name}
       </Button>
     </ListItem>
   )

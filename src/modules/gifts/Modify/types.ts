@@ -1,7 +1,7 @@
 import { UseModalProps } from '@chakra-ui/react'
 
-import { WeddingGift } from '../../common/types'
+import { List } from '../../../infra'
 
-export interface ModalModifyWeddingGiftProps extends UseModalProps {
-  weddingGift?: WeddingGift
+export interface ModalModifyListProps extends UseModalProps {
+  list?: List
 }

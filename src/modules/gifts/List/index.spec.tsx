@@ -1,38 +1,38 @@
 import { screen } from '@testing-library/react'
 
-import { useWeddingGifts, WeddingGift } from '../../../infra'
+import { List, useLists } from '../../../infra'
 import { renderWithProviders } from '../../../tests/helpers/render-with-providers'
-import { ListWeddingGifts } from '.'
+import { ListView } from '.'
 
 jest.mock('../../common/hooks')
 
 describe('modules - gifts - <List />', () => {
   test('should render the loading state when request is loading', () => {
-    ;(useWeddingGifts as jest.Mock).mockImplementation(() => ({
+    ;(useLists as jest.Mock).mockImplementation(() => ({
       isLoading: true,
     }))
 
-    renderWithProviders(<ListWeddingGifts />)
+    renderWithProviders(<ListView />)
 
     expect(screen.getByTestId('list-loading-state')).toBeInTheDocument()
   })
 
   test('should render the error state when request fail', () => {
-    ;(useWeddingGifts as jest.Mock).mockImplementation(() => ({
+    ;(useLists as jest.Mock).mockImplementation(() => ({
       isError: true,
     }))
 
-    renderWithProviders(<ListWeddingGifts />)
+    renderWithProviders(<ListView />)
 
     expect(screen.getByTestId('list-error-state')).toBeInTheDocument()
   })
 
   test('should render the list if data is received from request', async () => {
-    ;(useWeddingGifts as jest.Mock).mockImplementation(() => ({
+    ;(useLists as jest.Mock).mockImplementation(() => ({
       data: { data: listMocked },
     }))
 
-    renderWithProviders(<ListWeddingGifts />)
+    renderWithProviders(<ListView />)
 
     const item1Element = await screen.findByText('Item #1')
     const itemAssigned = await screen.findByText('Mr. Drone')
@@ -42,7 +42,7 @@ describe('modules - gifts - <List />', () => {
   })
 })
 
-const listMocked: WeddingGift[] = [
+const listMocked: List[] = [
   {
     id: 'e322fb88-1e91-4322-aa2a-8df87d225673',
     assigned: null,

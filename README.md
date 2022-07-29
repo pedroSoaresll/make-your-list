@@ -3,17 +3,17 @@
 
 # Project
 
-This project is a simple list with some features like add, remove and modify items. It was though and develop to solve a family problem.
+This project is a simple list with some features like adding, removing and modifying items. It was thought and developed to solve a family problem.
 
-The problema is that some couples was wedding and to organize a party to give gifts to them is hard to manage by WhatsApp group. Some problems that happen is loose information, gift assigners duplication, one people to manage list, difficult to know what is the latest list.
+The problem is that some couples were weddings and organizing a party to give gifts to them is hard to manage by WhatsApp group. Some problems that happen are loose information, gift assigners duplication, one person to manage the list, and difficulty knowing what is the latest list.
 
 ## API Backend
 
-The backend is developing by [Arthur Soares](https://github.com/Arthur-ext) in the following repository [Wedding Gift API](https://github.com/Arthur-ext/wedding-gifts-api)
+The backend is developed by [Arthur Soares](https://github.com/Arthur-ext) in the following repository [Wedding Gift API](https://github.com/Arthur-ext/wedding-gifts-api)
 
 ## API Mock
 
-To start the project with api mock you just need to run `npm run start:local`
+To start the project with API mock you just need to run `npm run start:local`
 
 ## Integrations
 
@@ -21,9 +21,9 @@ This repository uses [Vercel](https://vercel.com) and [Checkly](https://www.chec
 
 ### Vercel
 
-Vercel is used to administrate the deployment and available the app for the internet. In the top of this readme you can see the badge showing you the latest status.
+Vercel is used to administrate the deployment and available the app for the internet. On the top of this README you can see the badge showing you the latest status.
 
-Vercel is enabled to generate a deployment always for pull requests (generating an auto link preview) and when it's pull requests is merged, also run a deployment but it being for production.
+Vercel is enabled to generate a deployment always for pull requests (generating an auto link preview) and when its pull requests are merged, also running a deployment but it is for production.
 
 ### Checkly
 

@@ -18,16 +18,16 @@ import {
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useMutationCreateWeddingGift } from '../../../infra'
-import { AddWeddingGiftFormData } from './types'
+import { useMutationCreateList } from '../../../infra'
+import { AddListFormData } from './types'
 
-const ModalAddWeddingGift: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
+const ModalAddList: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
   const { register, handleSubmit, formState, reset } =
-    useForm<AddWeddingGiftFormData>()
+    useForm<AddListFormData>()
 
-  const mutation = useMutationCreateWeddingGift()
+  const mutation = useMutationCreateList()
 
-  const submit = ({ name }: AddWeddingGiftFormData) => mutation.mutate({ name })
+  const submit = ({ name }: AddListFormData) => mutation.mutate({ name })
 
   useEffect(() => {
     if (mutation.isSuccess || mutation.isError) {
@@ -85,7 +85,7 @@ export const Add = () => {
         Adicionar presente
       </Button>
 
-      <ModalAddWeddingGift isOpen={isOpen} onClose={onClose} />
+      <ModalAddList isOpen={isOpen} onClose={onClose} />
     </>
   )
 }

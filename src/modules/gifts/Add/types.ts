@@ -1,3 +1,3 @@
-export interface AddWeddingGiftFormData {
+export interface AddListFormData {
   name: string
 }

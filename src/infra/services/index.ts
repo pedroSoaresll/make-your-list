@@ -1,1 +1,1 @@
-export * from './wedding-api'
+export * from './lists-api'

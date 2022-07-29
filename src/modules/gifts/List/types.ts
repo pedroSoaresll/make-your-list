@@ -1,6 +1,6 @@
-import { WeddingGift } from '../../common/types'
+import { List } from '../../../infra'
 
-export interface WeddingGiftListItemProps {
-  weddingGift: WeddingGift
-  onModifyItem(item: WeddingGift): void
+export interface ListItemProps {
+  list: List
+  onModifyItem(item: List): void
 }
