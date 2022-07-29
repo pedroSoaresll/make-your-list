@@ -2,13 +2,13 @@ import { Heading, Spinner, Stack } from '@chakra-ui/react'
 import { useIsFetching } from 'react-query'
 
 import { Card } from '../../components'
-import { USE_LISTS_KEY } from '../../infra'
+import { USE_SPACE_KEY } from '../../infra'
 import { Add } from '../../modules/lists/Add'
 import { ListView } from '../../modules/lists/List'
 import { Layout } from '../common/layouts'
 
 const List = () => {
-  const isFetching = useIsFetching([USE_LISTS_KEY])
+  const isFetching = useIsFetching([USE_SPACE_KEY])
 
   return (
     <Layout>

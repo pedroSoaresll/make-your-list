@@ -1,12 +1,13 @@
 import axios from 'axios'
 
-import { DeleteList, List, PostList, UpdateList } from '../types'
+import { DeleteList, PostList, Space, UpdateList } from '../types'
 
 const service = axios.create({
   baseURL: process.env.REACT_APP_LISTS_API,
 })
 
-export const fetchLists = () => service.get<List[]>('/wedding-gifts')
+export const fetchSpace = (spaceId: string) =>
+  service.get<Space>(`/spaces/${spaceId}`)
 
 export const createList = (data: PostList) =>
   service.post('/wedding-gifts', data)

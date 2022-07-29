@@ -7,8 +7,8 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/list/:listId" element={<List />} />
+        <Route index element={<Home />} />
+        <Route path="/spaces/:spaceId/lists" element={<List />} />
       </Routes>
     </BrowserRouter>
   )

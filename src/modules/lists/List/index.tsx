@@ -13,15 +13,21 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import React, { Suspense, useCallback, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-import { List as ListAPI, useLists } from '../../../infra'
+import { List as ListAPI, useSpace } from '../../../infra'
 import { ListItemProps } from './types'
 
 const ModalModifyList = React.lazy(() => import('../Modify'))
 
 export const ListView = () => {
+  const params = useParams()
   const { isOpen, onClose, onOpen } = useDisclosure()
-  const { isLoading, isError, data } = useLists()
+  const {
+    isLoading,
+    isError,
+    data: { data: space } = {},
+  } = useSpace(params.spaceId!)
   const [ListToModify, setListToModify] = useState<ListAPI>()
 
   const handleOnModifyItem = (list: ListAPI) => {
@@ -38,7 +44,7 @@ export const ListView = () => {
 
   if (isError) return <ErrorState />
 
-  if (!data?.data.length)
+  if (!space?.lists.length)
     return (
       <Alert status="warning">
         <AlertIcon />
@@ -51,7 +57,7 @@ export const ListView = () => {
     <>
       <Stack>
         <List spacing="8">
-          {data?.data.map((list) => (
+          {space.lists.map((list) => (
             <ListItemView
               key={list.id}
               list={list}

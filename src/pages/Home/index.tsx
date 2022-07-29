@@ -10,7 +10,7 @@ const Home = () => {
 
   const handleButton = () => {
     const id = uuidv4()
-    navigate(`/list/${id}`)
+    navigate(`/spaces/${id}/lists`)
   }
 
   return (

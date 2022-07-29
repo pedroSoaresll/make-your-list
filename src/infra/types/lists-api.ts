@@ -1,5 +1,12 @@
+export type Space = {
+  id: string
+  name: string
+  lists: List[]
+}
+
 export type List = {
   id: string
+  spaceId: string
   assigned: string | null
   name: string
   createdAt: string

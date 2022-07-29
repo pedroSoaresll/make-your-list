@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { deleteList } from '../services'
 import { DeleteList } from '../types'
-import { USE_LISTS_KEY } from './use-list'
+import { USE_SPACE_KEY } from './use-space'
 
 export const useMutationDeleteList = () => {
   const queryClient = useQueryClient()
@@ -11,7 +11,7 @@ export const useMutationDeleteList = () => {
 
   return useMutation<unknown, unknown, DeleteList>(deleteList, {
     onSuccess() {
-      queryClient.invalidateQueries(USE_LISTS_KEY)
+      queryClient.invalidateQueries(USE_SPACE_KEY)
     },
     onError() {
       toast({

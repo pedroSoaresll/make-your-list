@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { updateList } from '../services'
 import { UpdateList } from '../types'
-import { USE_LISTS_KEY } from './use-list'
+import { USE_SPACE_KEY } from './use-space'
 
 export const useMutationUpdateList = () => {
   const queryClient = useQueryClient()
@@ -11,7 +11,7 @@ export const useMutationUpdateList = () => {
 
   return useMutation<unknown, unknown, UpdateList>(updateList, {
     onSuccess() {
-      queryClient.invalidateQueries(USE_LISTS_KEY)
+      queryClient.invalidateQueries(USE_SPACE_KEY)
     },
     onError() {
       toast({
