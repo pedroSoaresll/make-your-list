@@ -13,21 +13,19 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import React, { Suspense, useCallback, useState } from 'react'
-import { useParams } from 'react-router-dom'
 
 import { List as ListAPI, useSpace } from '../../../infra'
 import { ListItemProps } from './types'
 
 const ModalModifyList = React.lazy(() => import('../Modify'))
 
-export const ListView = () => {
-  const params = useParams()
+interface ListViewProps {
+  spaceId: string
+}
+
+export const ListView: React.FC<ListViewProps> = ({ spaceId }) => {
   const { isOpen, onClose, onOpen } = useDisclosure()
-  const {
-    isLoading,
-    isError,
-    data: { data: space } = {},
-  } = useSpace(params.spaceId!)
+  const { isLoading, isError, data: { data: space } = {} } = useSpace(spaceId)
   const [ListToModify, setListToModify] = useState<ListAPI>()
 
   const handleOnModifyItem = (list: ListAPI) => {
@@ -70,6 +68,7 @@ export const ListView = () => {
       {isOpen && (
         <Suspense fallback="Carregando...">
           <ModalModifyList
+            spaceId={spaceId}
             isOpen={isOpen}
             onClose={handleOnCloseModal}
             list={ListToModify}

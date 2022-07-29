@@ -17,4 +17,4 @@ export type PostList = Pick<List, 'name'>
 
 export type DeleteList = Pick<List, 'id'>
 
-export type UpdateList = Pick<List, 'id' | 'name' | 'assigned'>
+export type UpdateList = Pick<List, 'id' | 'name' | 'assigned' | 'spaceId'>

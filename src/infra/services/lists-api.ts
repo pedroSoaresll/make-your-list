@@ -15,5 +15,5 @@ export const createList = (data: PostList) =>
 export const deleteList = ({ id }: DeleteList) =>
   service.delete(`/wedding-gifts/${id}`)
 
-export const updateList = ({ id, ...data }: UpdateList) =>
-  service.patch(`/wedding-gifts/${id}`, data)
+export const updateList = ({ id, spaceId, ...data }: UpdateList) =>
+  service.patch(`/spaces/${spaceId}/lists/${id}`, data)

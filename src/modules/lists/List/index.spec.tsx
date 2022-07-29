@@ -12,7 +12,7 @@ describe('modules - gifts - <List />', () => {
       isLoading: true,
     }))
 
-    renderWithProviders(<ListView />)
+    renderWithProviders(<ListView spaceId={spaceMocked.id} />)
 
     expect(screen.getByTestId('list-loading-state')).toBeInTheDocument()
   })
@@ -22,7 +22,7 @@ describe('modules - gifts - <List />', () => {
       isError: true,
     }))
 
-    renderWithProviders(<ListView />)
+    renderWithProviders(<ListView spaceId={spaceMocked.id} />)
 
     expect(screen.getByTestId('list-error-state')).toBeInTheDocument()
   })
@@ -32,7 +32,7 @@ describe('modules - gifts - <List />', () => {
       data: { data: spaceMocked },
     }))
 
-    renderWithProviders(<ListView />)
+    renderWithProviders(<ListView spaceId={spaceMocked.id} />)
 
     const item1Element = await screen.findByText('Item #1')
     const itemAssigned = await screen.findByText('Mr. Drone')
@@ -43,7 +43,7 @@ describe('modules - gifts - <List />', () => {
 })
 
 const spaceMocked: Space = {
-  id: '',
+  id: 'd5babc3d-9e90-4770-aa10-8e04be75e369',
   name: 'Space name',
   lists: [
     {

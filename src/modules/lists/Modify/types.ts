@@ -4,4 +4,5 @@ import { List } from '../../../infra'
 
 export interface ModalModifyListProps extends UseModalProps {
   list?: List
+  spaceId: string
 }

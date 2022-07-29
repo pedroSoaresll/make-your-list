@@ -28,6 +28,7 @@ export const ModalModifyList: React.FC<ModalModifyListProps> = ({
   isOpen,
   onClose,
   list,
+  spaceId,
 }) => {
   const deleteMutation = useMutationDeleteList()
   const updateMutation = useMutationUpdateList()
@@ -58,7 +59,7 @@ export const ModalModifyList: React.FC<ModalModifyListProps> = ({
   }
 
   const submit = ({ name, assigned }: List) => {
-    updateMutation.mutate({ id: list.id, name, assigned })
+    updateMutation.mutate({ spaceId, id: list.id, name, assigned })
   }
 
   return (
