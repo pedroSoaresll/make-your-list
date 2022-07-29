@@ -1,0 +1,4 @@
+{
+  "/api/*": "/api/*",
+  "/spaces/:id/lists/:listId": "/lists/:listId"
+}
