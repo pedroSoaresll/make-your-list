@@ -1,90 +1,28 @@
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Spinner,
-  Stack,
-  Text,
-  useColorMode,
-  useColorModeValue,
-} from '@chakra-ui/react'
-import { useIsFetching } from 'react-query'
+import { Button, Heading, Text } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 
-import { USE_WEDDING_GIFTS_KEY } from '../../modules/common/hooks'
-import { Add } from '../../modules/gifts/Add'
-import { ListWeddingGifts } from '../../modules/gifts/List'
-
-interface LayoutProps {
-  children?: React.ReactNode
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <Flex minHeight="100vh" justifyContent="center">
-      <Flex
-        width="100%"
-        maxWidth="500px"
-        justifyContent="center"
-        alignItems="center"
-        marginY="16"
-        flexDirection="column"
-        padding="2"
-      >
-        {children}
-      </Flex>
-    </Flex>
-  )
-}
-
-const ToggleTheme = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
-
-  return (
-    <Box mb="3" alignSelf="flex-end">
-      <Button onClick={toggleColorMode} size="xs">
-        {colorMode !== 'light' ? (
-          <Flex columnGap="2">
-            <MoonIcon />
-            <Text>Escuro</Text>
-          </Flex>
-        ) : (
-          <Flex columnGap="2">
-            <SunIcon />
-            <Text>Claro</Text>
-          </Flex>
-        )}
-      </Button>
-    </Box>
-  )
-}
+import { Card } from '../../components/Card'
+import { Layout } from '../common/layouts/CenterPage'
 
 const Home = () => {
-  const bg = useColorModeValue('gray.50', 'blackAlpha.200')
-  const isFetching = useIsFetching([USE_WEDDING_GIFTS_KEY])
+  const navigate = useNavigate()
+
+  const handleButton = () => {
+    const id = uuidv4()
+    navigate(`/list/${id}`)
+  }
 
   return (
     <Layout>
-      <ToggleTheme />
+      <Card>
+        <Heading>Listas</Heading>
+        <Text>Crie e compartilhe listas com grupo de pessoas</Text>
 
-      <Stack
-        spacing="8"
-        bg={bg}
-        paddingY="8"
-        paddingX="6"
-        borderRadius="xl"
-        width="100%"
-      >
-        <Heading colorScheme="blackAlpha">Lista de presentes</Heading>
-        <ListWeddingGifts />
-
-        <Stack direction="row" justifyContent="space-between">
-          {isFetching ? <Spinner /> : <div></div>}
-
-          <Add />
-        </Stack>
-      </Stack>
+        <Button onClick={handleButton} colorScheme="twitter">
+          Começar
+        </Button>
+      </Card>
     </Layout>
   )
 }
