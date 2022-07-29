@@ -18,7 +18,7 @@ import {
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useMutationCreateWeddingGift } from '../../common/hooks'
+import { useMutationCreateWeddingGift } from '../../../infra'
 import { AddWeddingGiftFormData } from './types'
 
 const ModalAddWeddingGift: React.FC<UseModalProps> = ({ isOpen, onClose }) => {

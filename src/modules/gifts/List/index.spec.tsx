@@ -1,8 +1,7 @@
 import { screen } from '@testing-library/react'
 
+import { useWeddingGifts, WeddingGift } from '../../../infra'
 import { renderWithProviders } from '../../../tests/helpers/render-with-providers'
-import { useWeddingGifts } from '../../common/hooks'
-import { WeddingGift } from '../../common/types'
 import { ListWeddingGifts } from '.'
 
 jest.mock('../../common/hooks')

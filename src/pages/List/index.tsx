@@ -2,7 +2,7 @@ import { Heading, Spinner, Stack } from '@chakra-ui/react'
 import { useIsFetching } from 'react-query'
 
 import { Card } from '../../components'
-import { USE_WEDDING_GIFTS_KEY } from '../../modules/common/hooks'
+import { USE_WEDDING_GIFTS_KEY } from '../../infra'
 import { Add } from '../../modules/gifts/Add'
 import { ListWeddingGifts } from '../../modules/gifts/List'
 import { Layout } from '../common/layouts'

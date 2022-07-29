@@ -14,8 +14,7 @@ import {
 } from '@chakra-ui/react'
 import React, { Suspense, useCallback, useState } from 'react'
 
-import { useWeddingGifts } from '../../common/hooks'
-import { WeddingGift } from '../../common/types'
+import { useWeddingGifts, WeddingGift } from '../../../infra'
 import { WeddingGiftListItemProps } from './types'
 
 const ModalModifyWeddingGift = React.lazy(() => import('../Modify'))

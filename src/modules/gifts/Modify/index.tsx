@@ -20,8 +20,8 @@ import { useForm } from 'react-hook-form'
 import {
   useMutationDeleteWeddingGift,
   useMutationUpdateWeddingGift,
-} from '../../common/hooks'
-import { WeddingGift } from '../../common/types'
+  WeddingGift,
+} from '../../../infra'
 import { ModalModifyWeddingGiftProps } from './types'
 
 export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
