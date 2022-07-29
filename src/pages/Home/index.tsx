@@ -2,8 +2,8 @@ import { Button, Heading, Text } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 
-import { Card } from '../../components/Card'
-import { Layout } from '../common/layouts/CenterPage'
+import { Card } from '../../components'
+import { Layout } from '../common/layouts'
 
 const Home = () => {
   const navigate = useNavigate()
