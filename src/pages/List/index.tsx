@@ -23,7 +23,7 @@ const List = () => {
         <Stack direction="row" justifyContent="space-between">
           {isFetching ? <Spinner /> : <div></div>}
 
-          <Add />
+          <Add spaceId={params.spaceId} />
         </Stack>
       </Card>
     </Layout>

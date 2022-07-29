@@ -21,13 +21,22 @@ import { useForm } from 'react-hook-form'
 import { useMutationCreateList } from '../../../infra'
 import { AddListFormData } from './types'
 
-const ModalAddList: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
+interface ModalAddListProps extends UseModalProps {
+  spaceId: string
+}
+
+const ModalAddList: React.FC<ModalAddListProps> = ({
+  isOpen,
+  onClose,
+  spaceId,
+}) => {
   const { register, handleSubmit, formState, reset } =
     useForm<AddListFormData>()
 
   const mutation = useMutationCreateList()
 
-  const submit = ({ name }: AddListFormData) => mutation.mutate({ name })
+  const submit = ({ name }: AddListFormData) =>
+    mutation.mutate({ spaceId, name })
 
   useEffect(() => {
     if (mutation.isSuccess || mutation.isError) {
@@ -76,7 +85,11 @@ const ModalAddList: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
   )
 }
 
-export const Add = () => {
+interface AddProps {
+  spaceId: string
+}
+
+export const Add: React.FC<AddProps> = ({ spaceId }) => {
   const { onOpen, isOpen, onClose } = useDisclosure()
 
   return (
@@ -85,7 +98,7 @@ export const Add = () => {
         Adicionar presente
       </Button>
 
-      <ModalAddList isOpen={isOpen} onClose={onClose} />
+      <ModalAddList spaceId={spaceId} isOpen={isOpen} onClose={onClose} />
     </>
   )
 }

@@ -55,7 +55,7 @@ export const ModalModifyList: React.FC<ModalModifyListProps> = ({
   if (!list?.id) return null
 
   const handleOnRemoveList = () => {
-    deleteMutation.mutate({ id: list.id })
+    deleteMutation.mutate({ spaceId, id: list.id })
   }
 
   const submit = ({ name, assigned }: List) => {

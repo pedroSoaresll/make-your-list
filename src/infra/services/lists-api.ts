@@ -9,11 +9,11 @@ const service = axios.create({
 export const fetchSpace = (spaceId: string) =>
   service.get<Space>(`/spaces/${spaceId}`)
 
-export const createList = (data: PostList) =>
-  service.post('/wedding-gifts', data)
+export const createList = ({ spaceId, ...data }: PostList) =>
+  service.post(`/spaces/${spaceId}/lists`, data)
 
-export const deleteList = ({ id }: DeleteList) =>
-  service.delete(`/wedding-gifts/${id}`)
+export const deleteList = ({ id, spaceId }: DeleteList) =>
+  service.delete(`/spaces/${spaceId}/lists/${id}`)
 
 export const updateList = ({ id, spaceId, ...data }: UpdateList) =>
   service.patch(`/spaces/${spaceId}/lists/${id}`, data)
