@@ -58,6 +58,7 @@ const ModalAddList: React.FC<ModalAddListProps> = ({
               <FormLabel>Nome:</FormLabel>
               <Input
                 placeholder="Ex: Caixa de som Edifier mega blaster"
+                autoFocus
                 {...register('name', { required: true })}
               />
               {formState.errors.name?.type === 'required' && (

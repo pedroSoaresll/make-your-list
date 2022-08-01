@@ -57,7 +57,9 @@ const Home = () => {
             />
           </FormControl>
 
-          <Button colorScheme="twitter">Criar lista</Button>
+          <Button type="submit" colorScheme="twitter">
+            Criar lista
+          </Button>
         </Stack>
       </Card>
     </Layout>

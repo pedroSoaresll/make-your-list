@@ -89,6 +89,7 @@ export const ModalModifyList: React.FC<ModalModifyListProps> = ({
                 <FormLabel>Responsável:</FormLabel>
                 <Input
                   defaultValue={list?.assigned ?? ''}
+                  autoFocus
                   {...register('assigned')}
                 />
                 <FormHelperText>
