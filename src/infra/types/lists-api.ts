@@ -18,3 +18,5 @@ export type PostList = Pick<List, 'name' | 'spaceId'>
 export type DeleteList = Pick<List, 'id' | 'spaceId'>
 
 export type UpdateList = Pick<List, 'id' | 'name' | 'assigned' | 'spaceId'>
+
+export type CreateSpace = Pick<Space, 'name' | 'id'>

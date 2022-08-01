@@ -3,6 +3,14 @@
     {
       "id": "d5babc3d-9e90-4770-aa10-8e04be75e369",
       "name": "Space name"
+    },
+    {
+      "id": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "name": "Nova lista"
+    },
+    {
+      "id": "78cf31c5-6fbc-44f1-9112-249471071260",
+      "name": "Presente casamento Evandro"
     }
   ],
   "lists": [
@@ -11,6 +19,22 @@
       "spaceId": "d5babc3d-9e90-4770-aa10-8e04be75e369",
       "id": 1,
       "assigned": "Caroline"
+    },
+    {
+      "name": "Item 1",
+      "spaceId": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "id": 2
+    },
+    {
+      "name": "Item 2",
+      "spaceId": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "id": 3
+    },
+    {
+      "name": "Item 3",
+      "spaceId": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "id": 4,
+      "assigned": "Pedro"
     }
   ]
 }

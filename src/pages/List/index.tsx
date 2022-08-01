@@ -1,31 +1,39 @@
 import { Heading, Spinner, Stack } from '@chakra-ui/react'
-import { useIsFetching } from 'react-query'
 import { useParams } from 'react-router-dom'
 
 import { Card } from '../../components'
-import { USE_SPACE_KEY } from '../../infra'
+import { useSpace } from '../../infra'
 import { Add } from '../../modules/lists/Add'
 import { ListView } from '../../modules/lists/List'
 import { Layout } from '../common/layouts'
 
+const RenderContent = ({ spaceId }: Record<string, string>) => {
+  const { data: { data: space } = {}, isFetching } = useSpace(spaceId)
+
+  if (!space) return null
+
+  return (
+    <Card>
+      <Heading colorScheme="blackAlpha">{space.name}</Heading>
+      <ListView spaceId={spaceId} />
+
+      <Stack direction="row" justifyContent="space-between">
+        {isFetching ? <Spinner /> : <div></div>}
+
+        <Add spaceId={spaceId} />
+      </Stack>
+    </Card>
+  )
+}
+
 const List = () => {
-  const isFetching = useIsFetching([USE_SPACE_KEY])
   const params = useParams()
 
   if (!params.spaceId) return null
 
   return (
     <Layout>
-      <Card>
-        <Heading colorScheme="blackAlpha">Lista de presentes</Heading>
-        <ListView spaceId={params.spaceId} />
-
-        <Stack direction="row" justifyContent="space-between">
-          {isFetching ? <Spinner /> : <div></div>}
-
-          <Add spaceId={params.spaceId} />
-        </Stack>
-      </Card>
+      <RenderContent spaceId={params.spaceId} />
     </Layout>
   )
 }
