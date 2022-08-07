@@ -25,8 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:local": "concurrently 'npm run server' 'npm start'",
-    "start:lighthouse": "concurrently 'npm run server' 'serve -s build'",
+    "dev": "concurrently 'npm run server' 'npm start'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

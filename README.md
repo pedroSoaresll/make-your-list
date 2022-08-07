@@ -13,7 +13,7 @@ The backend is developed by [Arthur Soares](https://github.com/Arthur-ext) in th
 
 ## API Mock
 
-To start the project with API mock you just need to run `npm run start:local`
+To start the project with API mock you just need to run `npm run dev`
 
 ## Integrations
 
