@@ -1,90 +1,67 @@
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import {
-  Box,
   Button,
-  Flex,
+  FormControl,
+  FormLabel,
   Heading,
-  Spinner,
+  Input,
   Stack,
   Text,
-  useColorMode,
-  useColorModeValue,
 } from '@chakra-ui/react'
-import { useIsFetching } from 'react-query'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 
-import { USE_WEDDING_GIFTS_KEY } from '../../modules/common/hooks'
-import { Add } from '../../modules/gifts/Add'
-import { ListWeddingGifts } from '../../modules/gifts/List'
+import { Card } from '../../components'
+import { useMutationCreateSpace } from '../../infra/hooks/use-mutation-create-space'
+import { Layout } from '../common/layouts'
 
-interface LayoutProps {
-  children?: React.ReactNode
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <Flex minHeight="100vh" justifyContent="center">
-      <Flex
-        width="100%"
-        maxWidth="500px"
-        justifyContent="center"
-        alignItems="center"
-        marginY="16"
-        flexDirection="column"
-        padding="2"
-      >
-        {children}
-      </Flex>
-    </Flex>
-  )
-}
-
-const ToggleTheme = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
-
-  return (
-    <Box mb="3" alignSelf="flex-end">
-      <Button onClick={toggleColorMode} size="xs">
-        {colorMode !== 'light' ? (
-          <Flex columnGap="2">
-            <MoonIcon />
-            <Text>Escuro</Text>
-          </Flex>
-        ) : (
-          <Flex columnGap="2">
-            <SunIcon />
-            <Text>Claro</Text>
-          </Flex>
-        )}
-      </Button>
-    </Box>
-  )
+interface CreateSpaceFormData {
+  spaceName: string
 }
 
 const Home = () => {
-  const bg = useColorModeValue('gray.50', 'blackAlpha.200')
-  const isFetching = useIsFetching([USE_WEDDING_GIFTS_KEY])
+  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm<CreateSpaceFormData>()
+  const createSpace = useMutationCreateSpace()
+
+  const submit = handleSubmit((formData) => {
+    const { spaceName: name } = formData
+    const id = uuidv4()
+
+    createSpace.mutate(
+      {
+        id,
+        name,
+      },
+      {
+        onSuccess() {
+          navigate(`/spaces/${id}/lists`)
+        },
+      }
+    )
+  })
 
   return (
     <Layout>
-      <ToggleTheme />
+      <Card>
+        <Heading>Listas</Heading>
+        <Text>Crie e compartilhe listas com grupo de pessoas</Text>
 
-      <Stack
-        spacing="8"
-        bg={bg}
-        paddingY="8"
-        paddingX="6"
-        borderRadius="xl"
-        width="100%"
-      >
-        <Heading colorScheme="blackAlpha">Lista de presentes</Heading>
-        <ListWeddingGifts />
+        <Stack as="form" onSubmit={submit} spacing="6">
+          <FormControl>
+            <FormLabel>Nome da lista</FormLabel>
+            <Input
+              placeholder="Ex: presentes de casamento, mercado..."
+              autoFocus
+              {...register('spaceName', { required: true })}
+            />
+          </FormControl>
 
-        <Stack direction="row" justifyContent="space-between">
-          {isFetching ? <Spinner /> : <div></div>}
-
-          <Add />
+          <Button type="submit" colorScheme="twitter">
+            Criar lista
+          </Button>
         </Stack>
-      </Stack>
+      </Card>
     </Layout>
   )
 }

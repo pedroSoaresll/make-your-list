@@ -18,16 +18,25 @@ import {
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useMutationCreateWeddingGift } from '../../common/hooks'
-import { AddWeddingGiftFormData } from './types'
+import { useMutationCreateList } from '../../../infra'
+import { AddListFormData } from './types'
 
-const ModalAddWeddingGift: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
+interface ModalAddListProps extends UseModalProps {
+  spaceId: string
+}
+
+const ModalAddList: React.FC<ModalAddListProps> = ({
+  isOpen,
+  onClose,
+  spaceId,
+}) => {
   const { register, handleSubmit, formState, reset } =
-    useForm<AddWeddingGiftFormData>()
+    useForm<AddListFormData>()
 
-  const mutation = useMutationCreateWeddingGift()
+  const mutation = useMutationCreateList()
 
-  const submit = ({ name }: AddWeddingGiftFormData) => mutation.mutate({ name })
+  const submit = ({ name }: AddListFormData) =>
+    mutation.mutate({ spaceId, name })
 
   useEffect(() => {
     if (mutation.isSuccess || mutation.isError) {
@@ -49,6 +58,7 @@ const ModalAddWeddingGift: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
               <FormLabel>Nome:</FormLabel>
               <Input
                 placeholder="Ex: Caixa de som Edifier mega blaster"
+                autoFocus
                 {...register('name', { required: true })}
               />
               {formState.errors.name?.type === 'required' && (
@@ -76,7 +86,11 @@ const ModalAddWeddingGift: React.FC<UseModalProps> = ({ isOpen, onClose }) => {
   )
 }
 
-export const Add = () => {
+interface AddProps {
+  spaceId: string
+}
+
+export const Add: React.FC<AddProps> = ({ spaceId }) => {
   const { onOpen, isOpen, onClose } = useDisclosure()
 
   return (
@@ -85,7 +99,7 @@ export const Add = () => {
         Adicionar presente
       </Button>
 
-      <ModalAddWeddingGift isOpen={isOpen} onClose={onClose} />
+      <ModalAddList spaceId={spaceId} isOpen={isOpen} onClose={onClose} />
     </>
   )
 }

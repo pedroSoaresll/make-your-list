@@ -18,20 +18,21 @@ import { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import {
-  useMutationDeleteWeddingGift,
-  useMutationUpdateWeddingGift,
-} from '../../common/hooks'
-import { WeddingGift } from '../../common/types'
-import { ModalModifyWeddingGiftProps } from './types'
+  List,
+  useMutationDeleteList,
+  useMutationUpdateList,
+} from '../../../infra'
+import { ModalModifyListProps } from './types'
 
-export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
+export const ModalModifyList: React.FC<ModalModifyListProps> = ({
   isOpen,
   onClose,
-  weddingGift,
+  list,
+  spaceId,
 }) => {
-  const deleteMutation = useMutationDeleteWeddingGift()
-  const updateMutation = useMutationUpdateWeddingGift()
-  const { register, handleSubmit, formState, reset } = useForm<WeddingGift>()
+  const deleteMutation = useMutationDeleteList()
+  const updateMutation = useMutationUpdateList()
+  const { register, handleSubmit, formState, reset } = useForm<List>()
   const handleOnClose = useCallback(() => {
     reset()
     onClose()
@@ -51,14 +52,14 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
     }
   }, [updateMutation, handleOnClose])
 
-  if (!weddingGift?.id) return null
+  if (!list?.id) return null
 
-  const handleOnRemoveWeddingGift = () => {
-    deleteMutation.mutate({ id: weddingGift.id })
+  const handleOnRemoveList = () => {
+    deleteMutation.mutate({ spaceId, id: list.id })
   }
 
-  const submit = ({ name, assigned }: WeddingGift) => {
-    updateMutation.mutate({ id: weddingGift.id, name, assigned })
+  const submit = ({ name, assigned }: List) => {
+    updateMutation.mutate({ spaceId, id: list.id, name, assigned })
   }
 
   return (
@@ -74,7 +75,7 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
               <FormControl isInvalid={!!formState.errors.name?.type}>
                 <FormLabel>Nome:</FormLabel>
                 <Input
-                  defaultValue={weddingGift?.name}
+                  defaultValue={list?.name}
                   {...register('name', { required: true })}
                 />
                 {formState.errors.name?.type === 'required' && (
@@ -87,7 +88,8 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
               <FormControl>
                 <FormLabel>Responsável:</FormLabel>
                 <Input
-                  defaultValue={weddingGift?.assigned ?? ''}
+                  defaultValue={list?.assigned ?? ''}
+                  autoFocus
                   {...register('assigned')}
                 />
                 <FormHelperText>
@@ -97,12 +99,12 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
 
               <FormControl>
                 <FormLabel>Última atualização:</FormLabel>
-                <Input isDisabled defaultValue={weddingGift?.updatedAt} />
+                <Input isDisabled defaultValue={list?.updatedAt} />
               </FormControl>
 
               <FormControl>
                 <FormLabel>Criado em:</FormLabel>
-                <Input isDisabled defaultValue={weddingGift?.createdAt} />
+                <Input isDisabled defaultValue={list?.createdAt} />
               </FormControl>
             </Stack>
           </ModalBody>
@@ -111,7 +113,7 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
             <Button
               variant="ghost"
               colorScheme="red"
-              onClick={handleOnRemoveWeddingGift}
+              onClick={handleOnRemoveList}
               isLoading={deleteMutation.isLoading}
             >
               Remover
@@ -130,4 +132,4 @@ export const ModalModifyWeddingGift: React.FC<ModalModifyWeddingGiftProps> = ({
   )
 }
 
-export default ModalModifyWeddingGift
+export default ModalModifyList

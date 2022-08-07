@@ -1,5 +1,5 @@
 {
-  "name": "wedding-gifts",
+  "name": "lists-application",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,7 +14,9 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.33.1",
     "react-query": "^3.39.1",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "overrides": {
@@ -23,14 +25,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:local": "concurrently 'npm run server' 'npm start'",
-    "start:lighthouse": "concurrently 'npm run server' 'serve -s build'",
+    "dev": "concurrently 'npm run server' 'npm start'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "format:check": "prettier --check ./src",
-    "server": "json-server --port 8000 --watch src/__mocks__/db.json"
+    "server": "json-server --port 8000 --watch src/__mocks__/db.json --routes src/__mocks__/router.json"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -40,6 +41,7 @@
     "@types/node": "^18.0.4",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/uuid": "^8.3.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.2.1",

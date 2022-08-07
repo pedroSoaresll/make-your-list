@@ -1,32 +1,79 @@
 {
-  "wedding-gifts": [
+  "spaces": [
     {
-      "id": "e322fb88-1e91-4322-aa2a-8df87d225673",
-      "assigned": null,
-      "name": "Caixa de som edifier top das galaxias",
-      "createdAt": "2022-07-01T14:32:00",
-      "updatedAt": "2022-07-01T16:40:00"
+      "id": "d5babc3d-9e90-4770-aa10-8e04be75e369",
+      "name": "Space name"
     },
     {
-      "id": "89a8d729-fb2c-4d96-854c-db49d8f7dca8",
-      "assigned": null,
-      "name": "Caixa de som edifier top das galaxias",
-      "createdAt": "2022-07-01T14:32:00",
-      "updatedAt": "2022-07-01T16:40:00"
+      "id": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "name": "Nova lista"
     },
     {
-      "id": "9f50d004-be35-4db8-81f2-ddc55ff1cd2d",
-      "assigned": "Mr. Drone",
-      "name": "Caixa de som edifier top das galaxias",
-      "createdAt": "2022-07-01T14:32:00",
-      "updatedAt": "2022-07-01T16:40:00"
+      "id": "78cf31c5-6fbc-44f1-9112-249471071260",
+      "name": "Presente casamento Evandro"
     },
     {
-      "id": "7e8ac12d-390b-4a16-aa76-d67d974f593a",
-      "assigned": null,
-      "name": "Caixa de som edifier top das galaxias",
-      "createdAt": "2022-07-01T14:32:00",
-      "updatedAt": "2022-07-01T16:40:00"
+      "id": "fd54880b-e1d9-4ed1-9d62-2ed488bddd2b",
+      "name": "Compras da semana"
+    },
+    {
+      "id": "234adb52-9c19-48ea-936b-5239eb8e0043",
+      "name": "Compras da semana"
+    },
+    {
+      "id": "6ea308a4-892e-4d52-95a6-b2c2f8101610",
+      "name": "Mercado"
+    }
+  ],
+  "lists": [
+    {
+      "name": "Brinco",
+      "spaceId": "d5babc3d-9e90-4770-aa10-8e04be75e369",
+      "id": 1,
+      "assigned": "Caroline"
+    },
+    {
+      "name": "Item 1",
+      "spaceId": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "id": 2
+    },
+    {
+      "name": "Item 2",
+      "spaceId": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "id": 3
+    },
+    {
+      "name": "Item 3",
+      "spaceId": "f782ac9a-6987-4a23-9e1f-75282f74606a",
+      "id": 4,
+      "assigned": "Pedro"
+    },
+    {
+      "name": "Amendoim",
+      "spaceId": "6ea308a4-892e-4d52-95a6-b2c2f8101610",
+      "id": 5,
+      "assigned": "Caroline"
+    },
+    {
+      "name": "Ameixa",
+      "spaceId": "6ea308a4-892e-4d52-95a6-b2c2f8101610",
+      "id": 6
+    },
+    {
+      "name": "Abacate",
+      "spaceId": "6ea308a4-892e-4d52-95a6-b2c2f8101610",
+      "id": 7,
+      "assigned": "Pedro"
+    },
+    {
+      "name": "Amora",
+      "spaceId": "6ea308a4-892e-4d52-95a6-b2c2f8101610",
+      "id": 8
+    },
+    {
+      "name": "Alecrim",
+      "spaceId": "6ea308a4-892e-4d52-95a6-b2c2f8101610",
+      "id": 9
     }
   ]
 }

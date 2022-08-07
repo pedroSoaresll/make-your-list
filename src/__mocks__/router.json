@@ -1,0 +1,5 @@
+{
+  "/api/*": "/api/*",
+  "/spaces/:id": "/spaces/:id?_embed=lists",
+  "/spaces/:id/lists/:listId": "/lists/:listId"
+}

@@ -1,12 +1,12 @@
 import { ReactQueryDevtools } from 'react-query/devtools'
 
-import Home from '../pages/Home'
+import Router from '../pages'
 import { withProviders } from './helpers/with-providers'
 
 function App() {
   return (
     <>
-      <Home />
+      <Router />
       <ReactQueryDevtools />
     </>
   )

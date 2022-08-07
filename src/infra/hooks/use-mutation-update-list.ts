@@ -1,17 +1,17 @@
 import { useToast } from '@chakra-ui/react'
 import { useMutation, useQueryClient } from 'react-query'
 
-import { updateWeddingGifts } from '../services'
-import { UpdateGift } from '../types'
-import { USE_WEDDING_GIFTS_KEY } from './use-wedding-gifts'
+import { updateList } from '../services'
+import { UpdateList } from '../types'
+import { USE_SPACE_KEY } from './use-space'
 
-export const useMutationUpdateWeddingGift = () => {
+export const useMutationUpdateList = () => {
   const queryClient = useQueryClient()
   const toast = useToast()
 
-  return useMutation<unknown, unknown, UpdateGift>(updateWeddingGifts, {
+  return useMutation<unknown, unknown, UpdateList>(updateList, {
     onSuccess() {
-      queryClient.invalidateQueries(USE_WEDDING_GIFTS_KEY)
+      queryClient.invalidateQueries(USE_SPACE_KEY)
     },
     onError() {
       toast({
