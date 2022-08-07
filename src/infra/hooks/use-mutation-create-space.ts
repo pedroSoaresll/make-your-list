@@ -12,7 +12,7 @@ export const useMutationCreateSpace = () => {
       toast({
         status: 'error',
         title: 'Falha',
-        description: `Não foi possível remover o item da lista no momento.`,
+        description: `Não foi possível criar um espaço de lista no momento.`,
       })
     },
   })
