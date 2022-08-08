@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "format:check": "prettier --check ./src",
-    "server": "json-server --port 8000 --watch src/__mocks__/db.json --routes src/__mocks__/router.json"
+    "server": "json-server --port 8000 --watch __mocks__/db.json --routes __mocks__/router.json"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
