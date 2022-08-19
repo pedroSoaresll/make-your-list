@@ -8,6 +8,7 @@ export const handlers = [
   /**
    * Spaces handlers
    */
+
   rest.post('/api/spaces', async (req, res, ctx) => {
     const body = await req.json()
     spaceRepository.create(body.id, body.name)
