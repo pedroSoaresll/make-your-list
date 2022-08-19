@@ -23,19 +23,15 @@
     "web-vitals": "^2.1.4"
   },
   "overrides": {
-    "@svgr/webpack": "6.3.1",
-    "update-notifier": "6.0.2"
-
+    "@svgr/webpack": "6.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "concurrently 'npm run server' 'npm start'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
-    "format:check": "prettier --check ./src",
-    "server": "json-server --port 8000 --watch __mocks__/db.json --routes __mocks__/router.json"
+    "format:check": "prettier --check ./src"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -51,8 +47,9 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "json-server": "^0.17.0",
+    "msw": "^0.44.2",
     "prettier": "2.7.1",
+    "react-scripts": "^5.0.1",
     "typescript": "^4.7.4",
     "workbox-background-sync": "^6.5.4",
     "workbox-broadcast-update": "^6.5.4",
@@ -65,8 +62,7 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4",
-    "react-scripts": "^5.0.1"
+    "workbox-streams": "^6.5.4"
   },
   "browserslist": {
     "production": [
@@ -91,5 +87,8 @@
       "!**/src/tests/**",
       "!**/src/*"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
