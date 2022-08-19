@@ -13,6 +13,8 @@ if (['development', 'preview'].includes(process.env.NODE_ENV)) {
   worker.start()
 }
 
+console.log(process.env.NODE_ENV)
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <>
