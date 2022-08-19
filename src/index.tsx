@@ -7,7 +7,7 @@ import theme from './app/libraries/chakra-theme'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
-if (process.env.NODE_ENV === 'development') {
+if (['development', 'preview'].includes(process.env.NODE_ENV)) {
   const { worker } = require('./mocks/browser')
 
   worker.start()
