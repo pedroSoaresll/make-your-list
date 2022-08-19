@@ -7,6 +7,12 @@ import theme from './app/libraries/chakra-theme'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
+if (process.env.REACT_APP_USE_API_MOCKED === 'true') {
+  const { worker } = require('./mocks/browser')
+
+  worker.start()
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <>
