@@ -2,8 +2,13 @@ import axios from 'axios'
 
 import { CreateSpace, DeleteList, PostList, Space, UpdateList } from '../types'
 
+const baseURL =
+  process.env.REACT_APP_USE_API_MOCKED === 'true'
+    ? '/api'
+    : process.env.REACT_APP_LISTS_API
+
 const service = axios.create({
-  baseURL: process.env.REACT_APP_LISTS_API,
+  baseURL,
 })
 
 export const fetchSpace = (spaceId: string) =>
