@@ -1,5 +1,5 @@
 ![](https://vercelbadge.vercel.app/api/pedroSoaresll/wedding-gifts)
-![](https://api.checklyhq.com/v1/badges/checks/f4d841b1-83af-42c3-bca1-482b27d34925?style=flat&theme=default)
+![](https://api.checklyhq.com/v1/badges/checks/44cf6b91-3576-42fe-bed2-ca5de9fd7122?style=flat&theme=default&responseTime=true)
 
 # Project
 
