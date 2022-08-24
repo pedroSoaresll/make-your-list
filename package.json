@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "format:check": "prettier --check ./src"
@@ -77,15 +77,13 @@
     ]
   },
   "jest": {
-    "coverageThreshold": {
-      "global": {}
-    },
     "collectCoverageFrom": [
       "**/*.{ts,tsx}",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/src/tests/**",
-      "!**/src/*"
+      "!**/src/app/*",
+      "!**/src/pages/**"
     ]
   },
   "msw": {
