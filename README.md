@@ -9,6 +9,10 @@ This is a simple application that creates a space to have your lists separated f
 
 The main technology used to build this project was **React.js** using the [CRA (Create React App)](https://create-react-app.dev).
 
+## Backend repository
+
+The backend for this project has been developed by [Arthur Soares](https://github.com/Arthur-ext) in this repository [Make Your List API](https://github.com/Arthur-ext/make-your-list-api)
+
 ## Features already implemented
 
 - [x] CRA usage
