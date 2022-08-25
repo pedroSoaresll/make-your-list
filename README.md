@@ -13,6 +13,13 @@ The main technology used to build this project was **React.js** using the [CRA (
 
 The backend for this project has been developed by [Arthur Soares](https://github.com/Arthur-ext) in this repository [Make Your List API](https://github.com/Arthur-ext/make-your-list-api)
 
+## Environments
+
+If you want to enter this application to see how it is, follow the links below:
+
+- [Production](https://makeyourlist.vercel.app/) The app tries to connect to the real backend server.
+- [Preview](https://github.com/pedroSoaresll/make-your-list/deployments/activity_log?environment=Preview) The app runs based on mocks intercepting the requests to the backend server. After accessing that link chooses to view a deployment version.
+
 ## Features already implemented
 
 - [x] CRA usage
@@ -35,13 +42,6 @@ The backend for this project has been developed by [Arthur Soares](https://githu
 - [ ] Sonarqube as the code quality and code security analyzer
 - [ ] Cypress as the end-to-end tool testing the application
 - [ ] Multi-language support
-
-## Environments
-
-If you want to enter this application to see how it is, follow the links below:
-
-- [Production](https://makeyourlist.vercel.app/) The app tries to connect to the real backend server.
-- [Preview](https://github.com/pedroSoaresll/make-your-list/deployments/activity_log?environment=Preview) The app runs based on mocks intercepting the requests to the backend server. After accessing that link choose to view a deployment version.
 
 ## Running application locally
 
