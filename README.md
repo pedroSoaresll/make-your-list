@@ -9,7 +9,7 @@ This is a simple application that creates a space to have your lists separated f
 
 The main technology used to build this project was React.js using the [CRA (Create React App)](https://create-react-app.dev).
 
-Features already implemented:
+## Features already implemented
 
 - [x] CRA usage
 - [x] Typescript usage
