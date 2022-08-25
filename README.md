@@ -1,79 +1,70 @@
-# Project
+# Make Your List
 
 ![deployment badge status](https://vercelbadge.vercel.app/api/pedroSoaresll/wedding-gifts)
 ![checkly badge status](https://api.checklyhq.com/v1/badges/checks/44cf6b91-3576-42fe-bed2-ca5de9fd7122?style=flat&theme=default&responseTime=true)
 
-This project is a simple list with some features like adding, removing and modifying items. It was thought and developed to solve a family problem.
+The main goal of this repository is to put technologies learned into practice. You can follow what is been to arrive following the issues, and working in progress following the pull requests opened.
 
-The problem is that some couples were weddings and organizing a party to give gifts to them is hard to manage by WhatsApp group. Some problems that happen are loose information, gift assigners duplication, one person managing the list, and difficulty knowing what is the latest list.
+This is a simple application that creates a space to have your lists separated from other people. This approach is a good way to share your URL generated to friends or family to share your list of items.
 
-## API Backend
+The main technology used to build this project was React.js using the [CRA (Create React App)](https://create-react-app.dev).
 
-The backend is developed by [Arthur Soares](https://github.com/Arthur-ext) in the following repository [Wedding Gift API](https://github.com/Arthur-ext/wedding-gifts-api)
+Features already implemented:
 
-## API Mock
+- [x] CRA usage
+- [x] Typescript usage
+- [x] Lighthouse running on Github Actions on every pull request
+- [x] .nvmrc setting the node version
+- [x] Code format: Eslint and Prettier setup
+- [x] Chakra UI usage as the design system
+- [x] Axios usage as the network handler
+- [x] React-Query as the state distribution to requests
+- [x] React-Hook-Form as the formulary handler
+- [x] React-Router-Dom as the page handler
+- [x] Unit tests implemented using Jest
+- [x] MSW (Mock Service Worker) usage to intercept requests for test environment only
+- [x] Service Worker installed to cache bundles.
+- [x] Github Actions on every pull request targeting the branch "main" integrating the app (CI)
+- [x] Vercel integration to deployment (CD)
+- [x] Checkly integration to check every 12 hours the status of the application
+- [ ] Sentry as the monitoring service for the application
+- [ ] Sonarqube as the code quality and code security analyzer
+- [ ] Cypress as the end-to-end tool testing the application
+- [ ] Multi-language support
 
-To start the project with API mock you just need to run `npm run dev`
+## Environments
 
-## Integrations
+If you want to enter this application to see how it is, follow the links below:
 
-This repository uses [Vercel](https://vercel.com) and [Checkly](https://www.checklyhq.com).
+- [Production](https://makeyourlist.vercel.app/) The app tries to connect to the real backend server.
+- [Preview](https://github.com/pedroSoaresll/make-your-list/deployments/activity_log?environment=Preview) The app runs based on mocks intercepting the requests to the backend server. After accessing that link choose to view a deployment version.
 
-### Vercel
+## Running application locally
 
-Vercel is used to administrate the deployment and available the app for the internet. On the top of this README, you can see the badge showing you the latest status.
+After cloning the repository, open a terminal inside the repository directory and follow the steps below.
 
-Vercel is enabled to generate a deployment always for pull requests (generating an auto link preview) and when its pull requests are merged, also running a deployment but it is for production.
+Install dependencies
 
-### Checkly
+```sh
+npm i
+```
 
-Checkly is used to monitor the app periodically checking its status check with scenarios that you can build like an E2E test. For a while, this project is checked every 24 hours. At the top of this readme, you can see the badge showing you the latest status.
+Copy and rename the file `.env.example` to `.env`
 
----
+If you want MSW to intercept the requests to the backend server keep the `REACT_APP_USE_API_MOCKED=true` in the `.env` file.
 
-## Getting Started with Create React App
+You can also set your backend server domain by changing the `REACT_APP_LISTS_API``
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Start the application development server
 
-## Available Scripts
+```sh
+npm start
+```
 
-In the project directory, you can run:
+To run unit tests:
 
-### `npm start`
+```sh
+npm test
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` it at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+> This command also will generated a coverage report
