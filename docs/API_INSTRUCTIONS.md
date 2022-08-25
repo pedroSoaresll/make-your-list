@@ -1,67 +1,112 @@
-# Wedding Gifts API
+# Make Your List API
 
-## Payload
+The goal is to have a space that contains list and other information to each people have a unique space with your own lists to manage the way that they want.
 
-Below we have a list of gifts
+This document is a API contract to serve the web application "make-your-list" built in React (CRA).
 
-```json
-[
-  {
-    "id": "e322fb88-1e91-4322-aa2a-8df87d225673",
-    "assigned": null,
-    "name": "Caixa de som edifier top das galaxias",
-    "createdAt": "2022-07-01T14:32:00",
-    "updatedAt": "2022-07-01T16:40:00"
-  }
-]
-```
+All the resources and payload needed to the web application will be written below to explain how do you can create your backend to serve it.
 
-## Resources
+## Main resources
 
-`GET - /wedding-gifts`
+- Space
+- List (belongs to Space)
 
-```json
-// status code: 200 - OK
-// response:
-[
-  {
-    "id": "e322fb88-1e91-4322-aa2a-8df87d225673",
-    "assigned": null,
-    "name": "Caixa de som edifier top das galaxias",
-    "createdAt": "2022-07-01T14:32:00",
-    "updatedAt": "2022-07-01T16:40:00"
-  }
-]
-```
+## Entities
 
-`POST - /wedding-gifts`
+```ts
+export type Space = {
+  id: string
+  name: string
+  lists: List[]
+}
 
-```json
-// body payload:
-{
-  "name": "Gift name here",
-  "assigned": "A person name" // (optional)
+export type List = {
+  id: string
+  spaceId: string
+  assigned: string | null
+  name: string
+  createdAt: string
+  updatedAt: string
 }
 ```
 
-```json
-// status code: 201 - Created
-// response: empty
-```
+## Payloads
 
-`PATCH - /wedding-gifts/:weddingGiftId`
+### Create a space
+
+`POST /spaces`
+
+Request body:
 
 ```json
-// body payload:
 {
-  "assigned": "A person name"
+  "id": "88773b46-9046-40d2-8cb1-87a4ccbd31d6",
+  "name": "Nova lista"
 }
-
-// status code: 200 - OK
-// response: empty
 ```
+
+Response:
+
+`201 Created`
+
+### Get a space
+
+`GET /spaces/:spaceId`
+
+Response:
+
+`200 OK`
+
+```json
+{
+  "id": "88773b46-9046-40d2-8cb1-87a4ccbd31d6",
+  "name": "Nova lista",
+  "lists": []
+}
+```
+
+### Add an item to a list
+
+`POST /spaces/:spaceId/lists`
+
+Request body:
+
+```json
+{
+  "name": "Item 1"
+}
+```
+
+Response:
+
+`201 Created`
+
+### Update an item from a list
+
+`PATCH /spaces/:spaceId/lists/:listId`
+
+Request body:
+
+```json
+{
+  "name": "Item 1",
+  "assigned": "Pessoa 1"
+}
+```
+
+Response:
+
+`200 OK`
+
+### Delete an item from a list
+
+`DELETE /spaces/:spaceId/lists/:listId`
+
+Response:
+
+`200 OK`
 
 ## Rules
 
-- By default, new gifts must starts `assigned` as null and `createdAt` and `updatedAt` as date now;
+- By default, new items must starts `assigned` as null and `createdAt` and `updatedAt` as date now;
 - `updatedAt` needs to be updated on every changes
