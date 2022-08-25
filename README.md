@@ -7,7 +7,7 @@ The main goal of this repository is to put technologies learned into practice. Y
 
 This is a simple application that creates a space to have your lists separated from other people. This approach is a good way to share your URL generated to friends or family to share your list of items.
 
-The main technology used to build this project was React.js using the [CRA (Create React App)](https://create-react-app.dev).
+The main technology used to build this project was **React.js** using the [CRA (Create React App)](https://create-react-app.dev).
 
 ## Features already implemented
 
@@ -53,9 +53,9 @@ Copy and rename the file `.env.example` to `.env`
 
 If you want MSW to intercept the requests to the backend server keep the `REACT_APP_USE_API_MOCKED=true` in the `.env` file.
 
-You can also set your backend server domain by changing the `REACT_APP_LISTS_API``
+You can also set your backend server domain by changing the `REACT_APP_LISTS_API`
 
-Start the application development server
+Start application
 
 ```sh
 npm start
@@ -68,3 +68,44 @@ npm test
 ```
 
 > This command also will generated a coverage report
+
+To build the app:
+
+```sh
+npm run build
+```
+
+## Where is the app deployed?
+
+This repository is integrated with [Vercel](https://vercel.com) to deploy new versions on each environment of this app, production and previews.
+
+When opening a new pull request, Vercel rapidly starts a build to deploy that source code to a preview environment.
+
+When merged a pull request to the branch main, Vercel starts a deployment to the production environment.
+
+## Github Action workflow
+
+This repository has a workflow built to integrate the source code on every pull request opened to the default branch, "main".
+
+The workflow consists of these steps:
+
+- Install dependencies
+- Code lint
+- Code format
+- test
+- build
+- Lighthouse check
+
+Workflow map:
+
+![image](https://user-images.githubusercontent.com/11558773/186775163-04809fba-219b-4acd-9a11-2a8cbdee98d2.png)
+
+## Dependabot
+
+Dependabot is activated to every Monday check if this repository has a dependency vulnerability.
+
+If Dependabot finds a dependency vulnerable, it'll open a pull request describing and suggesting a change upgrading usually upgrading the package version.
+
+## Author
+
+[Pedro Oliveira](https://github.com/pedroSoaresll)
