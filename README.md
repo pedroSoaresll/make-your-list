@@ -1,11 +1,11 @@
-![](https://vercelbadge.vercel.app/api/pedroSoaresll/wedding-gifts)
-![](https://api.checklyhq.com/v1/badges/checks/44cf6b91-3576-42fe-bed2-ca5de9fd7122?style=flat&theme=default&responseTime=true)
-
 # Project
+
+![deployment badge status](https://vercelbadge.vercel.app/api/pedroSoaresll/wedding-gifts)
+![checkly badge status](https://api.checklyhq.com/v1/badges/checks/44cf6b91-3576-42fe-bed2-ca5de9fd7122?style=flat&theme=default&responseTime=true)
 
 This project is a simple list with some features like adding, removing and modifying items. It was thought and developed to solve a family problem.
 
-The problem is that some couples were weddings and organizing a party to give gifts to them is hard to manage by WhatsApp group. Some problems that happen are loose information, gift assigners duplication, one person to manage the list, and difficulty knowing what is the latest list.
+The problem is that some couples were weddings and organizing a party to give gifts to them is hard to manage by WhatsApp group. Some problems that happen are loose information, gift assigners duplication, one person managing the list, and difficulty knowing what is the latest list.
 
 ## API Backend
 
@@ -21,13 +21,13 @@ This repository uses [Vercel](https://vercel.com) and [Checkly](https://www.chec
 
 ### Vercel
 
-Vercel is used to administrate the deployment and available the app for the internet. On the top of this README you can see the badge showing you the latest status.
+Vercel is used to administrate the deployment and available the app for the internet. On the top of this README, you can see the badge showing you the latest status.
 
 Vercel is enabled to generate a deployment always for pull requests (generating an auto link preview) and when its pull requests are merged, also running a deployment but it is for production.
 
 ### Checkly
 
-Checkly is used to monitoring the app periodically checking it's status check with scenarios that you can build like a E2E tests. For a while, this project is checked in each 24 hours. In the top of this readme you can see the badge showing you the latest status.
+Checkly is used to monitor the app periodically checking its status check with scenarios that you can build like an E2E test. For a while, this project is checked every 24 hours. At the top of this readme, you can see the badge showing you the latest status.
 
 ---
 
@@ -66,11 +66,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` it at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
