@@ -67,7 +67,7 @@ export const ModalModifyList: React.FC<ModalModifyListProps> = ({
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton />
-        <ModalHeader>Modificar presente</ModalHeader>
+        <ModalHeader>Modificar lista</ModalHeader>
 
         <form onSubmit={handleSubmit(submit)}>
           <ModalBody>
