@@ -4,7 +4,13 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 
 import theme from '../libraries/chakra-theme'
 
-const client = new QueryClient()
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: process.env.NODE_ENV !== 'test',
+    },
+  },
+})
 
 export const withProviders = (Component: React.ComponentType) => {
   return (props: any) => (

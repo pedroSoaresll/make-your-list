@@ -26,6 +26,7 @@ interface ListViewProps {
 export const ListView: React.FC<ListViewProps> = ({ spaceId }) => {
   const { isOpen, onClose, onOpen } = useDisclosure()
   const { isLoading, isError, data: { data: space } = {} } = useSpace(spaceId)
+
   const [ListToModify, setListToModify] = useState<ListAPI>()
 
   const handleOnModifyItem = (list: ListAPI) => {
