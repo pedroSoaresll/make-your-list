@@ -1,35 +1,39 @@
-import { screen } from '@testing-library/react'
+import { act, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Space, useSpace } from '../../../infra'
+import { fetchSpace } from '../../../infra/services'
 import { renderWithProviders } from '../../../tests/helpers/render-with-providers'
 import { ListView } from '.'
 
-jest.mock('../../../infra')
+jest.mock('../../../infra/services/lists-api')
 
 describe('modules - gifts - <List />', () => {
-  test('should render the loading state when request is loading', () => {
-    ;(useSpace as jest.Mock).mockImplementation(() => ({
-      isLoading: true,
-    }))
+  test('should render the loading state when request is loading and after show the empty state', async () => {
+    ;(fetchSpace as jest.Mock).mockImplementation(() => ({}))
 
     renderWithProviders(<ListView spaceId={spaceMocked.id} />)
 
     expect(screen.getByTestId('list-loading-state')).toBeInTheDocument()
+
+    await screen.findByText('Nenhum presente cadastrado.')
   })
 
-  test('should render the error state when request fail', () => {
-    ;(useSpace as jest.Mock).mockImplementation(() => ({
-      isError: true,
-    }))
+  test('should render the error state when request fail', async () => {
+    ;(fetchSpace as jest.Mock).mockImplementation(() => Promise.reject())
 
     renderWithProviders(<ListView spaceId={spaceMocked.id} />)
 
-    expect(screen.getByTestId('list-error-state')).toBeInTheDocument()
+    const errorMessage = await screen.findByText(
+      'Algo de errado não esta certo :/'
+    )
+
+    expect(errorMessage).toBeInTheDocument()
   })
 
   test('should render the list if data is received from request', async () => {
-    ;(useSpace as jest.Mock).mockImplementation(() => ({
-      data: { data: spaceMocked },
+    ;(fetchSpace as jest.Mock).mockImplementation(() => ({
+      data: spaceMocked,
     }))
 
     renderWithProviders(<ListView spaceId={spaceMocked.id} />)
@@ -39,6 +43,33 @@ describe('modules - gifts - <List />', () => {
 
     expect(item1Element).toBeInTheDocument()
     expect(itemAssigned).toBeInTheDocument()
+  })
+
+  test('should open modal to modify the item when click on an item from list without an assigner', async () => {
+    ;(fetchSpace as jest.Mock).mockImplementation(() => ({
+      data: spaceMocked,
+    }))
+
+    renderWithProviders(<ListView spaceId={spaceMocked.id} />)
+
+    const listItem = await screen.findByText('Item #1')
+
+    await userEvent.click(listItem)
+
+    expect(screen.getByLabelText('Nome:')).toHaveValue('Item #1')
+  })
+
+  test('should open modal to modify the item when click on an item from list with an assigner', async () => {
+    ;(fetchSpace as jest.Mock).mockImplementation(() => ({
+      data: spaceMocked,
+    }))
+
+    renderWithProviders(<ListView spaceId={spaceMocked.id} />)
+
+    const listItem = await screen.findByText('Mr. Drone')
+    await userEvent.click(listItem)
+
+    expect(screen.getByLabelText('Responsável:')).toHaveValue('Mr. Drone')
   })
 })
 
