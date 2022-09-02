@@ -6,10 +6,8 @@ import theme from '../libraries/chakra-theme'
 
 const client = new QueryClient()
 
-export const withProviders = <T = unknown,>(
-  Component: React.ComponentType<T>
-) => {
-  return (props: T) => (
+export const withProviders = (Component: React.ComponentType) => {
+  return (props: any) => (
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={client}>
         <Component {...props} />
