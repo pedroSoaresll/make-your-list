@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "16.17.0",
-    "npm": "8.18.0"
+    "node": "18.12.1",
+    "npm": ">=8.x"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.12",
@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "format:check": "prettier --check ./src"
@@ -78,13 +78,16 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/*.{ts,tsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**",
-      "!**/src/tests/**",
-      "!**/src/app/*",
+      "** /*.{ts,tsx}",
+      "!**/node_modules /**",
+      "!**/vendor /**",
+      "!**/src/tests /**",
+      "!**/src/app /*",
       "!**/src/pages/**"
-    ]
+    ],
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   },
   "msw": {
     "workerDirectory": "public"
