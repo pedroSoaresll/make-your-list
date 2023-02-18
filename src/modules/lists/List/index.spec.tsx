@@ -1,7 +1,7 @@
-import { act, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { Space, useSpace } from '../../../infra'
+import { Space } from '../../../infra'
 import { fetchSpace } from '../../../infra/services'
 import { renderWithProviders } from '../../../tests/helpers/render-with-providers'
 import { ListView } from '.'
