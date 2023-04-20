@@ -1,7 +1,6 @@
 # Make Your List
 
 ![deployment badge status](https://vercelbadge.vercel.app/api/pedroSoaresll/wedding-gifts)
-![checkly badge status](https://api.checklyhq.com/v1/badges/checks/44cf6b91-3576-42fe-bed2-ca5de9fd7122?style=flat&theme=default&responseTime=true)
 
 The main goal of this repository is to put technologies learned into practice. You can follow what is been to arrive following the issues, and working in progress following the pull requests opened.
 
@@ -37,7 +36,6 @@ If you want to enter this application to see how it is, follow the links below:
 - [x] Service Worker installed to cache bundles.
 - [x] Github Actions on every pull request targeting the branch "main" integrating the app (CI)
 - [x] Vercel integration to deployment (CD)
-- [x] Checkly integration to check every 12 hours the status of the application
 - [x] Hotjar tracking
 - [ ] Sentry as the monitoring service for the application
 - [ ] Sonarqube as the code quality and code security analyzer
