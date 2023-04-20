@@ -38,6 +38,7 @@ If you want to enter this application to see how it is, follow the links below:
 - [x] Github Actions on every pull request targeting the branch "main" integrating the app (CI)
 - [x] Vercel integration to deployment (CD)
 - [x] Checkly integration to check every 12 hours the status of the application
+- [x] Hotjar tracking
 - [ ] Sentry as the monitoring service for the application
 - [ ] Sonarqube as the code quality and code security analyzer
 - [ ] Cypress as the end-to-end tool testing the application
