@@ -1,5 +1,6 @@
-import { rest } from 'msw'
+import { http, HttpResponse } from 'msw'
 
+import { List } from '../infra'
 import { SpaceRepository } from './repositories/space'
 
 const spaceRepository = new SpaceRepository()
@@ -9,46 +10,49 @@ export const handlers = [
    * Spaces handlers
    */
 
-  rest.post('/api/spaces', async (req, res, ctx) => {
-    const body = await req.json()
+  http.post('/api/spaces', async ({ request }) => {
+    const body = (await request.json()) as { id: string; name: string }
     spaceRepository.create(body.id, body.name)
-
-    return res(ctx.status(201))
+    return new HttpResponse(undefined, { status: 201 })
   }),
 
-  rest.get('/api/spaces/:spaceId', async (req, res, ctx) =>
-    res(ctx.json(spaceRepository.get(req.params.spaceId as string)))
-  ),
+  http.get('/api/spaces/:spaceId', ({ params }) => {
+    return HttpResponse.json(spaceRepository.get(params.spaceId as string))
+  }),
 
   /**
    * Lists from space handlers
    */
 
-  rest.post('/api/spaces/:spaceId/lists', async (req, res, ctx) => {
-    const body = await req.json()
-    spaceRepository.createList(req.params.spaceId as string, body)
+  http.post('/api/spaces/:spaceId/lists', async ({ request, params }) => {
+    const body = (await request.json()) as List
+    spaceRepository.createList(params.spaceId as string, body)
 
-    return res(ctx.status(201))
+    return new HttpResponse(undefined, { status: 201 })
   }),
 
-  rest.delete('/api/spaces/:spaceId/lists/:listId', (req, res, ctx) => {
+  http.delete('/api/spaces/:spaceId/lists/:listId', ({ params }) => {
     spaceRepository.deleteList(
-      req.params.spaceId as string,
-      req.params.listId as string
+      params.spaceId as string,
+      params.listId as string
     )
 
-    return res(ctx.status(200))
+    return new HttpResponse(undefined, { status: 204 })
   }),
 
-  rest.patch('/api/spaces/:spaceId/lists/:listId', async (req, res, ctx) => {
-    const body = await req.json()
+  http.patch(
+    '/api/spaces/:spaceId/lists/:listId',
+    async ({ request, params }) => {
+      const body = (await request.json()) as List
+      console.log('body from msw', body)
 
-    spaceRepository.patchList(
-      req.params.spaceId as string,
-      req.params.listId as string,
-      body
-    )
+      spaceRepository.patchList(
+        params.spaceId as string,
+        params.listId as string,
+        body
+      )
 
-    return res(ctx.status(200))
-  }),
+      return new HttpResponse(undefined, { status: 204 })
+    }
+  ),
 ]
