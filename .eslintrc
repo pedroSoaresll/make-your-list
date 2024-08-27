@@ -1,5 +1,5 @@
 {
-  "extends": ["react-app", "react-app/jest", "prettier"],
+  "extends": ["react-app", "prettier"],
   "plugins": ["simple-import-sort", "import", "prettier"],
   "rules": {
     "prettier/prettier": "error",
@@ -8,6 +8,6 @@
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "@typescript-eslint/no-unused-vars": "error"
-  }
+    "@typescript-eslint/no-unused-vars": "error",
+  },
 }

@@ -1,12 +1,13 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { beforeEach, describe, expect, Mock, test, vi } from 'vitest'
 
 import { List } from '../../../infra'
 import { deleteList, updateList } from '../../../infra/services'
 import { renderWithProviders } from '../../../tests/helpers/render-with-providers'
 import ModalModifyList from '.'
 
-jest.mock('../../../infra/services/lists-api')
+vi.mock('../../../infra/services/lists-api')
 
 describe('modules - lists - Modify', () => {
   let list: List
@@ -55,7 +56,7 @@ describe('modules - lists - Modify', () => {
   })
 
   test('should emit onClose event when click to close the modal', async () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
 
     renderWithProviders(
       <ModalModifyList
@@ -91,9 +92,9 @@ describe('modules - lists - Modify', () => {
   })
 
   test('should trigger updateMutation when submit the formulary', async () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
 
-    ;(updateList as jest.Mock).mockImplementation(() => ({}))
+    ;(updateList as Mock).mockImplementation(() => ({}))
 
     renderWithProviders(
       <ModalModifyList
@@ -112,9 +113,9 @@ describe('modules - lists - Modify', () => {
   })
 
   test('should trigger deleteMutation when click on remove item', async () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
 
-    ;(deleteList as jest.Mock).mockImplementation(() => ({}))
+    ;(deleteList as Mock).mockImplementation(() => ({}))
 
     renderWithProviders(
       <ModalModifyList

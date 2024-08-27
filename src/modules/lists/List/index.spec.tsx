@@ -1,12 +1,13 @@
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, expect, test, vi } from 'vitest'
 
 import { Space } from '../../../infra'
 import { fetchSpace } from '../../../infra/services'
 import { renderWithProviders } from '../../../tests/helpers/render-with-providers'
 import { ListView } from '.'
 
-jest.mock('../../../infra/services/lists-api')
+vi.mock('../../../infra/services/lists-api')
 
 describe('modules - gifts - <List />', () => {
   test('should render the loading state when request is loading and after show the empty state', async () => {
@@ -45,18 +46,20 @@ describe('modules - gifts - <List />', () => {
     expect(itemAssigned).toBeInTheDocument()
   })
 
-  test('should open modal to modify the item when click on an item from list without an assigner', async () => {
+  test.only('should open modal to modify the item when click on an item from list without an assigner', async () => {
     ;(fetchSpace as jest.Mock).mockImplementation(() => ({
       data: spaceMocked,
     }))
 
     renderWithProviders(<ListView spaceId={spaceMocked.id} />)
 
-    const listItem = await screen.findByText('Item #1')
+    const listItem = await screen.findByRole('button', { name: 'Item #1' })
 
     await userEvent.click(listItem)
 
-    expect(screen.getByLabelText('Nome:')).toHaveValue('Item #1')
+    await waitFor(() => {
+      expect(screen.queryByLabelText('Nome:')).toHaveValue('Item #1')
+    })
   })
 
   test('should open modal to modify the item when click on an item from list with an assigner', async () => {

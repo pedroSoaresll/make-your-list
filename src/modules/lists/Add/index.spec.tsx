@@ -1,18 +1,19 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, expect, Mock, test, vi } from 'vitest'
 
 import { useMutationCreateList } from '../../../infra/hooks/use-mutation-create-list'
 import { renderWithProviders } from '../../../tests/helpers/render-with-providers'
 import { Add } from '.'
 
-jest.mock('../../../infra/hooks/use-mutation-create-list')
+vi.mock('../../../infra/hooks/use-mutation-create-list')
 
 describe(`<Add />`, () => {
   test('should do not allow submit button when form is invalid', async () => {
     const spaceId = '44572e78-aeac-49f4-b74a-c918e40ebbaf'
-    const mutateFn = jest.fn()
+    const mutateFn = vi.fn()
 
-    ;(useMutationCreateList as jest.Mock).mockImplementation(() => ({
+    ;(useMutationCreateList as Mock).mockImplementation(() => ({
       mutate: mutateFn,
     }))
 
@@ -33,9 +34,9 @@ describe(`<Add />`, () => {
   test('should submit the form', async () => {
     const spaceId = '44572e78-aeac-49f4-b74a-c918e40ebbaf'
     const itemName = 'Novo item'
-    const mutateFn = jest.fn()
+    const mutateFn = vi.fn()
 
-    ;(useMutationCreateList as jest.Mock).mockImplementation(() => ({
+    ;(useMutationCreateList as Mock).mockImplementation(() => ({
       mutate: mutateFn,
     }))
 

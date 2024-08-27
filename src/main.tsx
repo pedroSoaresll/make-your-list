@@ -1,5 +1,5 @@
 import { ColorModeScript } from '@chakra-ui/react'
-import React from 'react'
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
 import App from './app'
@@ -7,8 +7,8 @@ import theme from './app/libraries/chakra-theme'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
-if (process.env.REACT_APP_USE_API_MOCKED === 'true') {
-  const { worker } = require('./mocks/browser')
+if (import.meta.env.VITE_USE_API_MOCKED === 'true') {
+  const { worker } = await import('./mocks/browser')
 
   worker.start()
 }
@@ -17,9 +17,9 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-    <React.StrictMode>
+    <StrictMode>
       <App />
-    </React.StrictMode>
+    </StrictMode>
   </>
 )
 

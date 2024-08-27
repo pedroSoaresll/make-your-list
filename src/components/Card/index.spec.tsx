@@ -1,5 +1,6 @@
 import { Text } from '@chakra-ui/react'
 import { screen } from '@testing-library/react'
+import { describe, expect, test } from 'vitest'
 
 import { renderWithProviders } from '../../tests/helpers/render-with-providers'
 import { Card } from '.'
